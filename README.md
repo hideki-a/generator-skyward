@@ -1,4 +1,4 @@
-generator-skyward
+generator-skyward [![Build Status](https://secure.travis-ci.org/hideki-a/generator-skyward.png?branch=master)](http://travis-ci.org/hideki-a/generator-skyward)
 =================
 
 Yeoman generator for scaffolding out a website.
