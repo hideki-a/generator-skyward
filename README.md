@@ -28,4 +28,4 @@ For more information on what `generator-skyward` can do for you, take a look at 
 
 ## License
 
-[BSD license](http://opensource.org/licenses/bsd-license.php)
+[MIT License](http://en.wikipedia.org/wiki/MIT_License)

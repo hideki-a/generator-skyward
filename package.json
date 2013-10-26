@@ -29,7 +29,7 @@
   },
   "licenses": [
     {
-      "type": "BSD"
+      "type": "MIT"
     }
   ],
   "readme": "# Website generator\n\n- Make sure you have [yo](https://github.com/yeoman/yo) installed: `npm install -g yo`\n- Install the generator: `npm install -g generator-skyward`\n- Run: `yo skyward`\n\n\n## License\n\n[BSD license](http://opensource.org/licenses/bsd-license.php)\n",
