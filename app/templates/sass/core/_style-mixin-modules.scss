@@ -50,17 +50,16 @@
 				float: right;
 				margin-left: $margin;
 			}
-			.text{
-				float: left;
-			}
 		}
 		&.image-L{
 			.image{
 				float: left;
 				margin-right: $margin;
 			}
+		}
+		&.image-parallel{
 			.text{
-				float: right;
+				overflow: hidden;
 			}
 		}
 	}

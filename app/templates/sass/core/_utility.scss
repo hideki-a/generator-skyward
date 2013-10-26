@@ -12,13 +12,6 @@
 	}
 }
 
-// # line-height計算
-//
-// 廃止。後方互換のため保存。
-@function lh($height, $baseheight) {
-	@return #{$height/$baseheight};
-}
-
 
 // # フォントファミリー
 //
@@ -34,6 +27,8 @@
 		font-family: 'Hiragino Kaku Gothic Pro', Meiryo, 'MS PGothic', sans-serif;
 	} @else if $type == hiragino-without-meiryo {
 		font-family: 'Hiragino Kaku Gothic Pro', 'MS PGothic', sans-serif;
+	} @else if $type == mincho {
+		font-family: "Hiragino Mincho Pro", "HGS明朝E", "ＭＳ Ｐ明朝", serif;
 	}
 }
 
@@ -51,7 +46,7 @@
 			display: block;
 			visibility: hidden;
 			clear: both;
-			content: " ";
+			content: "　";    // @charsetを出力させるため全角にしている
 			height: 0.01px;
 		}
 	}
@@ -79,5 +74,5 @@
 // ## 引数:
 // なし
 @mixin pie {
-	behavior: stylesheet-url("PIE.#{$pie-ext}");
+	behavior: url($pie-url);
 }
