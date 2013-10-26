@@ -1,0 +1,15 @@
+{
+    "browser": true,
+    "curly": true,
+    "eqnull": true,
+    "eqeqeq": true,
+    "undef": true,
+    "unused": true,
+    "latedef": true,
+    "newcap": true,
+    "plusplus": true,
+    "globals": {
+        "jQuery": true,
+        "_": true
+    }
+}

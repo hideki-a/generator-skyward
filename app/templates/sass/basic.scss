@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+// ===========================================================
+// Variables
+// ===========================================================
+$color: #000;
+$linkcolor: #1440ff;
+$hovercolor: #f60;
+
+@import "core";
+
+@include reset-common;
+
+@import "base";
+@import "layout";
+@import "modules";
+// @import "multiscreen";
+
+// Self Clearing
+@include clearfix;
+
+// Print
+@import "print";

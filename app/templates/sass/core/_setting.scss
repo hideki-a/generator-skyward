@@ -1,0 +1,27 @@
+// # Support Browser
+//
+// サポートするブラウザの定義。
+// Compassで出力されるベンダープリフィックス付きプロパティと、IEの後方互換に影響。
+//
+// * [Compass Cross-Browser Support Configuration](http://compass-style.org/reference/compass/support/)
+$support-ie6: true !default;
+$support-ie7: true !default;
+$support-ie8: true !default;
+$support-ie9: true !default;
+
+$experimental-support-for-khtml: false !default;
+
+// # Document Type
+//
+// HTML文書の文書型定義。
+$doc-html5: true;
+
+// # Extension
+//
+// ポリフィルで利用するライブラリ等の拡張子の設定。
+$pie-ext: "htc";
+
+// # Variables
+//
+// 汎用的に利用する変数を定義。
+$tmp: "";
