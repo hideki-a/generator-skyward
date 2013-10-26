@@ -18,12 +18,12 @@
     "url": "git://github.com/hideki/generator-skyward.git"
   },
   "scripts": {},
-  "dependencies": {},
-  "peerDependencies": {},
-  "devDependencies": {
+  "dependencies": {
     "yeoman-generator": "~0.14.0-rc.1",
     "chdir": "0.0.0"
   },
+  "peerDependencies": {},
+  "devDependencies": {},
   "engines": {
     "node": ">=0.8.0"
   },
