@@ -17,13 +17,17 @@
     "type": "git",
     "url": "git://github.com/hideki/generator-skyward.git"
   },
-  "scripts": {},
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
   "dependencies": {
     "yeoman-generator": "~0.14.0-rc.1",
     "chdir": "0.0.0"
   },
   "peerDependencies": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "mocha": "~1.13.0"
+  },
   "engines": {
     "node": ">=0.8.0"
   },
@@ -32,7 +36,7 @@
       "type": "MIT"
     }
   ],
-  "readme": "# Website generator\n\n- Make sure you have [yo](https://github.com/yeoman/yo) installed: `npm install -g yo`\n- Install the generator: `npm install -g generator-skyward`\n- Run: `yo skyward`\n\n\n## License\n\n[BSD license](http://opensource.org/licenses/bsd-license.php)\n",
+  "readme": "# Website generator [![Build Status](https://secure.travis-ci.org/hideki-a/generator-skyward.png?branch=master)](http://travis-ci.org/hideki-a/generator-skyward)\n\n- Make sure you have [yo](https://github.com/yeoman/yo) installed: `npm install -g yo`\n- Install the generator: `npm install -g generator-skyward`\n- Run: `yo skyward`\n\n\n## License\n\n[BSD license](http://opensource.org/licenses/bsd-license.php)\n",
   "readmeFilename": "readme.md",
   "_id": "generator-skyward@1.0.2",
   "_from": "generator-skyward@"
