@@ -52,6 +52,10 @@ SiteGenerator.prototype.stylesheet = function stylesheet() {
   this.copy('config.rb', 'tools/config.rb');
 };
 
+SiteGenerator.prototype.htmlTmpl = function htmlTmpl() {
+  this.copy('index.html', 'htdocs/index.html');
+};
+
 SiteGenerator.prototype.app = function app() {
   this.mkdir('htdocs');
   this.mkdir('htdocs/common');

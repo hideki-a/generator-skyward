@@ -32,7 +32,8 @@ describe('Website generator test', function () {
       'tools/bower.json',
       'tools/package.json',
       'tools/Gruntfile.coffee',
-      'htdocs/_scss/basic.scss'
+      'htdocs/_scss/basic.scss',
+      'htdocs/index.html'
     ];
 
     this.skyward.options['skip-install'] = true;
