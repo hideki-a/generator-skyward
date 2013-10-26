@@ -8,14 +8,14 @@
     "front-end"
   ],
   "homepage": "https://github.com/hideki-a/generator-skyward",
-  "bugs": "https://github.com/yeoman/generator-skyward/issues",
+  "bugs": "https://github.com/hideki/generator-skyward/issues",
   "author": {
     "name": "Hideki Abe"
   },
   "main": "app/index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/yeoman/generator-skyward.git"
+    "url": "git://github.com/hideki/generator-skyward.git"
   },
   "scripts": {},
   "dependencies": {},
@@ -32,8 +32,8 @@
       "type": "BSD"
     }
   ],
-  "readme": "# Website generator\n\n- Make sure you have [yo](https://github.com/yeoman/yo) installed: `npm install -g yo`\n- Install the generator: `npm install -g generator-webapp`\n- Run: `yo skyward`\n\n\n## License\n\n[BSD license](http://opensource.org/licenses/bsd-license.php)\n",
+  "readme": "# Website generator\n\n- Make sure you have [yo](https://github.com/yeoman/yo) installed: `npm install -g yo`\n- Install the generator: `npm install -g generator-skyward`\n- Run: `yo skyward`\n\n\n## License\n\n[BSD license](http://opensource.org/licenses/bsd-license.php)\n",
   "readmeFilename": "readme.md",
-  "_id": "generator-skyward@0.1.0",
+  "_id": "generator-skyward@1.0.0",
   "_from": "generator-skyward@"
 }
