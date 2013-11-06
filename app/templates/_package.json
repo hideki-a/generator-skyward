@@ -7,7 +7,7 @@
   "devDependencies": {
     "matchdep": "~0.1.1",
     "grunt": "~0.4.0",
-    "grunt-compass-multidir": "git://github.com/hideki-a/grunt-compass-multidir.git",
+    "grunt-contrib-sass": "~0.5.0",
     "grunt-simple-xmlsitemap": "git://github.com/hideki-a/grunt-simple-xmlsitemap.git",
     "grunt-contrib-connect": "~0.5.0",
     "grunt-contrib-watch": "~0.4.4",
@@ -24,6 +24,7 @@
     "grunt-combine-media-queries": "~1.0.6",
     "grunt-contrib-cssmin": "~0.6.1",
     "connect-livereload": "~0.3.0",
-    "grunt-connect-proxy": "~0.1.6"
+    "grunt-connect-proxy": "~0.1.6",
+    "grunt-notify": "~0.2.15"
   }
 }

@@ -8,21 +8,22 @@ mountFolder = (connect, dir) ->
 module.exports = (grunt) ->
   grunt.initConfig
     pkg: grunt.file.readJSON 'package.json'
-    compass:
-      dev:
-        reference:
-          '../htdocs/common/css': '../htdocs/_scss'
-          '../htdocs/category/css': '../htdocs/category/_scss'
-        options:
-          config: 'config.rb'
-          environment: 'development'
 
-      dist:
-        reference: '<%= compass.dev.reference %>'
+    sass:
+      options:
+        sourcemap: true
+        compass: true
+
+      default:
+        files:
+          '../htdocs/common/css/basic.css': '../htdocs/_scss/basic.scss'
         options:
-          config: 'config.rb'
-          environment: 'production'
-          force: true
+          style: 'expanded'
+
+      compressed:
+        files: '<%= sass.default.files %>'
+        options:
+          style: 'compressed'
 
     connect:
       livereload:
@@ -47,9 +48,9 @@ module.exports = (grunt) ->
         nospawn: true
         livereload: true
 
-      compass:
+      sass:
         files: '../htdocs/**/*.scss'
-        tasks: ['compass:dev']
+        tasks: ['sass:default']
 
       static:
         files: [
@@ -123,15 +124,12 @@ module.exports = (grunt) ->
       validator:
         cmd: 'site_validator test/sitemap.xml test/validator/report.html'
 
-    growl:
-      notify: true
-
   # Load grunt tasks.
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks)
 
   # Register tasks.
   grunt.registerTask 'default', [
-    'compass:dev'
+    'sass:default'
     'configureProxies'
     'connect'
     'watch'
