@@ -8,14 +8,14 @@
     "front-end"
   ],
   "homepage": "https://github.com/hideki-a/generator-skyward",
-  "bugs": "https://github.com/hideki/generator-skyward/issues",
+  "bugs": "https://github.com/hideki-a/generator-skyward/issues",
   "author": {
     "name": "Hideki Abe"
   },
   "main": "app/index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/hideki/generator-skyward.git"
+    "url": "git://github.com/hideki-a/generator-skyward.git"
   },
   "scripts": {
     "test": "mocha --reporter spec"
