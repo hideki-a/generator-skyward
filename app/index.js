@@ -1,7 +1,7 @@
 'use strict';
 var util = require('util');
 var chdir = require('chdir');
-// var path = require('path');
+var path = require('path');
 // var spawn = require('child_process').spawn;
 var yeoman = require('yeoman-generator');
 
@@ -15,6 +15,8 @@ var SiteGenerator = module.exports = function SiteGenerator(args, options, confi
       this.installDependencies({ skipInstall: options['skip-install'] });
     }.bind(this));
   });
+
+  this.appPath = process.cwd();
 
   // this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
 };
@@ -49,7 +51,7 @@ SiteGenerator.prototype.jshint = function jshint() {
 
 SiteGenerator.prototype.stylesheet = function stylesheet() {
   this.directory('sass', 'htdocs/_scss');
-  this.copy('config.rb', 'tools/config.rb');
+  this.template('config.rb', 'tools/config.rb');
 };
 
 SiteGenerator.prototype.htmlTmpl = function htmlTmpl() {

@@ -11,4 +11,4 @@ http_generated_images_path = "/"
 javascripts_dir = "../htdocs/common/js"
 
 # Other paths on your system from which to import sass files.
-#add_import_path "/Users/[User Name]/Sites/[Virtual Host Name]/htdocs/_scss"
+add_import_path "<%= appPath %>/htdocs/_scss"
