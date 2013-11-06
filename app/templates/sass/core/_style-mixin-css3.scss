@@ -86,14 +86,8 @@
 		background-image: -webkit-gradient(linear, #{$angle_webkit}, #{$color-stop1_webkit}#{$color-stop2_webkit}#{$color-stop3_webkit}#{$color-stop4_webkit}#{$color-stop5_webkit});
 		background-image: -webkit-#{$type}-gradient(#{$angle_old}, #{$color-stop1_css}#{$color-stop2_css}#{$color-stop3_css}#{$color-stop4_css}#{$color-stop5_css});
 	}
-	@if $experimental-support-for-mozilla {
-		background-image: -moz-#{$type}-gradient(#{$angle_old}, #{$color-stop1_css}#{$color-stop2_css}#{$color-stop3_css}#{$color-stop4_css}#{$color-stop5_css});
-	}
 	@if $experimental-support-for-microsoft {
 		background-image: -ms-#{$type}-gradient(#{$angle_old}, #{$color-stop1_css}#{$color-stop2_css}#{$color-stop3_css}#{$color-stop4_css}#{$color-stop5_css});
-	}
-	@if $experimental-support-for-opera {
-		background-image: -o-#{$type}-gradient(#{$angle_old}, #{$color-stop1_css}#{$color-stop2_css}#{$color-stop3_css}#{$color-stop4_css}#{$color-stop5_css});
 	}
 	background-image: #{$type}-gradient(#{$angle}, #{$color-stop1_css}#{$color-stop2_css}#{$color-stop3_css}#{$color-stop4_css}#{$color-stop5_css});
 }
