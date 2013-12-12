@@ -22,6 +22,7 @@
     "grunt-contrib-cssmin": "~0.6.1",
     "connect-livereload": "~0.3.0",
     "grunt-connect-proxy": "~0.1.6",
-    "grunt-notify": "~0.2.15"
+    "grunt-notify": "~0.2.15",
+    "grunt-autoprefixer": "~0.4.1"
   }
 }

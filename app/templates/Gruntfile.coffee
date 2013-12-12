@@ -50,13 +50,27 @@ module.exports = (grunt) ->
 
       sass:
         files: '../htdocs/**/*.scss'
-        tasks: ['sass:default']
+        tasks: [
+          'sass:default'
+          'autoprefixer:dist'
+        ]
 
       static:
         files: [
           '../htdocs/**/*.html'
           '../htdocs/**/*.js'
         ]
+
+    autoprefixer:
+      options:
+        browser: [
+          'last 2 version'
+          'ff 24'
+          'ie 9'
+          'ie 8'
+        ]
+      dist:
+        src: '../htdocs/common/css/basic.css'
 
     imageoptim:
       files: ['../htdocs']
@@ -130,6 +144,7 @@ module.exports = (grunt) ->
   # Register tasks.
   grunt.registerTask 'default', [
     'sass:default'
+    'autoprefixer:dist'
     'configureProxies'
     'connect'
     'watch'
