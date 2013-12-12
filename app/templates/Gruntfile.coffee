@@ -20,11 +20,6 @@ module.exports = (grunt) ->
         options:
           style: 'expanded'
 
-      compressed:
-        files: '<%= sass.default.files %>'
-        options:
-          style: 'compressed'
-
     connect:
       livereload:
         options:
