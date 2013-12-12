@@ -1,4 +1,6 @@
-node_modules/
-jslib/
+tools/node_modules/
+bower_components/
 archives/
 materials/
+htdocs/common/css/basic.css
+images/sprt-*
