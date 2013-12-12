@@ -49,6 +49,10 @@ SiteGenerator.prototype.jshint = function jshint() {
   this.copy('jshintrc', 'tools/.jshintrc');
 };
 
+SiteGenerator.prototype.csslint = function csslint() {
+  this.copy('csslintrc', 'tools/.csslintrc');
+};
+
 SiteGenerator.prototype.stylesheet = function stylesheet() {
   this.directory('sass', 'htdocs/_scss');
   this.template('config.rb', 'tools/config.rb');

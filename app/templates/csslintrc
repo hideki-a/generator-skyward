@@ -1,0 +1,12 @@
+{
+    "box-model": false,
+    "box-sizing": false,
+    "qualified-headings": false,
+    "unique-headings": false,
+    "ids": false,
+    "important": false,
+    "regex-selectors": false,
+    "adjoining-classes": false,
+    "font-sizes": false,
+    "text-indent": false
+}
