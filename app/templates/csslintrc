@@ -8,5 +8,6 @@
     "regex-selectors": false,
     "adjoining-classes": false,
     "font-sizes": false,
-    "text-indent": false
+    "text-indent": false,
+    "compatible-vendor-prefixes": false
 }
