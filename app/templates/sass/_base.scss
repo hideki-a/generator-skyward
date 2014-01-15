@@ -5,7 +5,7 @@
 // -----------------------------------------------------------
 body{
 	@include font-family("hiragino");
-	line-height: lh(18,14);
+	line-height: rs(18,14, "");
 	font-size: rs(14,16);
 	color: $color;
 	-webkit-text-size-adjust: 100%;
