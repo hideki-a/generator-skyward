@@ -1,6 +1,6 @@
 {
   "name": "generator-skyward",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Yeoman generator for scaffolding out a website",
   "keywords": [
     "yeoman-generator",
@@ -38,6 +38,6 @@
   ],
   "readme": "# Website generator [![Build Status](https://secure.travis-ci.org/hideki-a/generator-skyward.png?branch=master)](http://travis-ci.org/hideki-a/generator-skyward)\n\n- Make sure you have [yo](https://github.com/yeoman/yo) installed: `npm install -g yo`\n- Install the generator: `npm install -g generator-skyward`\n- Run: `yo skyward`\n\n\n## License\n\n[MIT license](http://opensource.org/licenses/mit-license.php)\n",
   "readmeFilename": "README.md",
-  "_id": "generator-skyward@1.2.0",
+  "_id": "generator-skyward@1.2.1",
   "_from": "generator-skyward@"
 }
