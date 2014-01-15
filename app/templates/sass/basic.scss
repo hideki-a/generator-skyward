@@ -1,12 +1,6 @@
 @charset "UTF-8";
 
-// ===========================================================
-// Variables
-// ===========================================================
-$color: #000;
-$linkcolor: #1440ff;
-$hovercolor: #f60;
-
+@import "setting";
 @import "core";
 
 @include reset-common;

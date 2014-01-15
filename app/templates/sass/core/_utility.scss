@@ -39,15 +39,17 @@
 // なし
 @mixin clearfix {
 	%clearfix{
+		/* フロートの解除 */    // @charset出力のため、あえてコメントを日本語化している
 		@if $support-ie6 or $support-ie7 {
 			*zoom: 1;
 		}
-		&:after{
-			display: block;
-			visibility: hidden;
+		&:before,
+		&:after {
+			content: " ";
+			display: table;
+		}
+		&:after {
 			clear: both;
-			content: "　";    // @charsetを出力させるため全角にしている
-			height: 0.01px;
 		}
 	}
 }

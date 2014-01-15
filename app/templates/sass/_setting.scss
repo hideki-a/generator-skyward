@@ -1,0 +1,19 @@
+// # Document Type
+//
+// HTML文書の文書型定義。
+$doc-html5: true;
+
+// # Extension
+//
+// ポリフィルで利用するライブラリ等の拡張子の設定。
+$pie-url: "/common/css/PIE.htc";
+
+// # Wide-use Variables
+//
+// 汎用的に利用する変数を定義。
+$tmp: "";
+
+// Color Settings
+$color: #000;
+$linkcolor: #1440ff;
+$hovercolor: #f60;
