@@ -60,10 +60,11 @@ module.exports = (grunt) ->
       options:
         browser: [
           'last 2 version'
-          'ff 24'
+          'Firefox ESR'
           'ie 9'
           'ie 8'
         ]
+        map: true
       dist:
         src: '../htdocs/common/css/basic.css'
 
