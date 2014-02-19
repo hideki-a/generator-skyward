@@ -69,7 +69,7 @@ module.exports = (grunt) ->
         src: '../htdocs/common/css/basic.css'
 
     imageoptim:
-      files: ['../htdocs']
+      src: ['../htdocs']
       options:
         jpegMini: false
         imageAlpha: false,
