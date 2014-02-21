@@ -36,8 +36,9 @@ SiteGenerator.prototype.packageJSON = function packageJSON() {
   this.template('_package.json', 'tools/package.json');
 };
 
-SiteGenerator.prototype.git = function git() {
+SiteGenerator.prototype.rootconfig = function rootconfig() {
   this.copy('gitignore', '.gitignore');
+  this.copy('editorconfig', '.editorconfig');
 };
 
 SiteGenerator.prototype.bower = function bower() {

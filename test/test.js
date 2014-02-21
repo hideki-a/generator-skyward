@@ -29,6 +29,7 @@ describe('Website generator test', function () {
 
   it('creates expected files', function (done) {
     var expected = [
+      '.editorconfig',
       'tools/bower.json',
       'tools/package.json',
       'tools/Gruntfile.coffee',
