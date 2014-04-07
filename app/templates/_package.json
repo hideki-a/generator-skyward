@@ -23,6 +23,7 @@
     "connect-livereload": "~0.3.0",
     "grunt-connect-proxy": "~0.1.6",
     "grunt-notify": "~0.2.15",
-    "grunt-autoprefixer": "~0.6.0"
+    "grunt-autoprefixer": "~0.6.0",
+    "grunt-csspretty": "~0.3.1"
   }
 }
