@@ -1,6 +1,8 @@
 tools/node_modules/
 bower_components/
+backup/
 archives/
 materials/
+test/
 htdocs/common/css/basic.css
 images/sprt-*
