@@ -9,7 +9,7 @@ Yeoman generator for scaffolding out a website.
 * Automagically compile Compass
 * Lint your scripts
 * Automagically wire up your Bower components.
-* Awesome Image Optimization (via ImageOptim)
+* Awesome Image Optimization
 
 For more information on what `generator-skyward` can do for you, take a look at the [Grunt tasks](https://github.com/hideki-a/generator-skyward/blob/master/app/templates/Gruntfile.coffee) used in our `Gruntfile.coffee`.
 
