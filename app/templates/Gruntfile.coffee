@@ -68,6 +68,14 @@ module.exports = (grunt) ->
       dist:
         src: '../htdocs/common/css/basic.css'
 
+    image:
+      all:
+        files: [
+          expand: true
+          cwd: '../htdocs'
+          src: ['**/*.{png,jpg,svg}']
+        ]
+
     imageoptim:
       src: ['../htdocs']
       options:
@@ -146,6 +154,10 @@ module.exports = (grunt) ->
     'watch'
   ]
 
+  grunt.registerTask 'imagemin', [
+    'newer:image:all'
+  ]
+
   grunt.registerTask 'publish', [
     # 'jshint'
     # 'concat'
@@ -154,7 +166,7 @@ module.exports = (grunt) ->
     'csscomb'
     'cmq'
     'cssmin'
-    'imageoptim'
+    'newer:image:all'
   ]
 
   grunt.registerTask 'server', ['connect:livereload:keepalive']

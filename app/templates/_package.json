@@ -24,6 +24,8 @@
     "grunt-connect-proxy": "~0.1.10",
     "grunt-notify": "~0.3.0",
     "grunt-autoprefixer": "~0.8.1",
-    "grunt-csspretty": "~0.3.2"
+    "grunt-csspretty": "~0.3.2",
+    "grunt-newer": "~0.7.0",
+    "grunt-image": "~0.7.3"
   }
 }
