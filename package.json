@@ -1,6 +1,6 @@
 {
   "name": "generator-skyward",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Yeoman generator for scaffolding out a website",
   "keywords": [
     "yeoman-generator",
@@ -37,6 +37,6 @@
     }
   ],
   "readmeFilename": "README.md",
-  "_id": "generator-skyward@1.3.0",
+  "_id": "generator-skyward@1.4.1",
   "_from": "generator-skyward@"
 }
