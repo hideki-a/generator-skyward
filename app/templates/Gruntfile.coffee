@@ -13,6 +13,7 @@ module.exports = (grunt) ->
       options:
         # sourcemap: none
         compass: true
+        precision: 3
 
       default:
         files:
