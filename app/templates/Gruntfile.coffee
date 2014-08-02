@@ -11,7 +11,7 @@ module.exports = (grunt) ->
 
     sass:
       options:
-        sourcemap: true
+        # sourcemap: none
         compass: true
 
       default:
