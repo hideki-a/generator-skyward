@@ -6,7 +6,7 @@ Yeoman generator for scaffolding out a website.
 ## Features
 
 * Built-in preview server with LiveReload
-* Automagically compile Compass
+* Automagically compile Sass
 * Lint your scripts
 * Automagically wire up your Bower components.
 * Awesome Image Optimization
