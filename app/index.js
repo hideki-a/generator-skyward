@@ -1,19 +1,23 @@
 'use strict';
 var util = require('util');
 var chdir = require('chdir');
-var path = require('path');
-// var spawn = require('child_process').spawn;
 var yeoman = require('yeoman-generator');
-
 
 var SiteGenerator = module.exports = function SiteGenerator(args, options, config) {
   yeoman.generators.Base.apply(this, arguments);
 
   this.on('end', function () {
-    // https://github.com/yeoman/generator/issues/282
-    chdir('./tools', function () {
-      this.installDependencies({ skipInstall: options['skip-install'] });
-    }.bind(this));
+    // http://stackoverflow.com/questions/22361446/yeoman-generator-installing-project-dependencies-in-custom-folder
+    // http://stackoverflow.com/questions/18841273/how-to-run-a-grunt-task-after-my-yeoman-generator-finishes-installing
+    var approot = process.cwd();
+    var npmdir = approot + '/tools';
+    process.chdir(npmdir);
+    this.installDependencies({
+      skipInstall: options['skip-install'],
+      callback: function () {
+        process.chdir(approot);
+      }
+    });
   });
 
   this.appPath = process.cwd();
