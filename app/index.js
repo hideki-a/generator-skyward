@@ -1,6 +1,5 @@
 'use strict';
 var util = require('util');
-var chdir = require('chdir');
 var yeoman = require('yeoman-generator');
 
 var SiteGenerator = module.exports = function SiteGenerator(args, options, config) {
