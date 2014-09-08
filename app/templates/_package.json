@@ -3,6 +3,9 @@
   "description": "",
   "version": "0.0.0",
   "main": "Gruntfile.coffee",
+  "scripts": {
+    "postinstall": "npm link grunt-image"
+  },
   "dependencies": {},
   "devDependencies": {
     "matchdep": "~0.3.0",
@@ -25,7 +28,6 @@
     "grunt-notify": "~0.3.1",
     "grunt-autoprefixer": "~1.0.1",
     "grunt-csspretty": "~0.3.3",
-    "grunt-newer": "~0.7.0",
-    "grunt-image": "~0.8.2"
+    "grunt-newer": "~0.7.0"
   }
 }

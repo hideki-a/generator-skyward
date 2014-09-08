@@ -145,6 +145,7 @@ module.exports = (grunt) ->
 
   # Load grunt tasks.
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks)
+  grunt.loadNpmTasks 'grunt-image'
 
   # Register tasks.
   grunt.registerTask 'default', [
