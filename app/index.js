@@ -29,6 +29,21 @@ util.inherits(SiteGenerator, yeoman.generators.Base);
 SiteGenerator.prototype.askFor = function askFor() {
   // welcome message
   console.log(this.yeoman);
+
+  var done = this.async();
+  var prompts = [
+    {
+      type: 'confirm',
+      name: 'sublimetext',
+      message: 'Do you use Sublime Text?',
+      default: 'Y/n'
+    }
+  ];
+
+  this.prompt(prompts, function (props) {
+    this.sublimetext = props.sublimetext;
+    done();
+  }.bind(this));
 };
 
 SiteGenerator.prototype.gruntfile = function gruntfile() {
@@ -55,6 +70,12 @@ SiteGenerator.prototype.jshint = function jshint() {
 
 SiteGenerator.prototype.csslint = function csslint() {
   this.copy('csslintrc', 'tools/.csslintrc');
+};
+
+SiteGenerator.prototype.sublime = function sublime() {
+  if (this.sublimetext) {
+    this.template('_sublime-project', this._.slugify(this.appname) + '.sublime-project');
+  }
 };
 
 SiteGenerator.prototype.stylesheet = function stylesheet() {

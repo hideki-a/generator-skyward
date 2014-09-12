@@ -6,3 +6,4 @@ materials/
 test/
 htdocs/common/css/basic.css
 images/sprt-*
+*.sublime-*
