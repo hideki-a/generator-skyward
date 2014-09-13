@@ -1,46 +1,29 @@
 /*global describe, beforeEach, it*/
 
-var path    = require('path');
+var path = require('path');
+var assert = require('yeoman-generator').assert;
 var helpers = require('yeoman-generator').test;
-var assert  = require('assert');
+var os = require('os');
 
-
-describe('Website generator test', function () {
-  beforeEach(function (done) {
-    helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
-      if (err) {
-        return done(err);
-      }
-
-      this.skyward = helpers.createGenerator('skyward:app', [
-        '../../app', [
-          helpers.createDummyGenerator(),
-          'mocha:app'
-        ]
-      ]);
-      done();
-    }.bind(this));
+describe('test:app', function () {
+  before(function (done) {
+    helpers.run(path.join(__dirname, '../app'))
+      .inDir(path.join(os.tmpdir(), './temp'))
+      .withOptions({ 'skip-install': true })
+      .withPrompt({
+        sublimetext: 'Y'
+      })
+      .on('end', done);
   });
 
-  it('the generator can be required without throwing', function () {
-    // not testing the actual run of generators yet
-    this.app = require('../app');
-  });
-
-  it('creates expected files', function (done) {
-    var expected = [
+  it('creates files', function () {
+    assert.file([
       '.editorconfig',
       'tools/bower.json',
       'tools/package.json',
       'tools/Gruntfile.coffee',
       'htdocs/_scss/basic.scss',
       'htdocs/index.html'
-    ];
-
-    this.skyward.options['skip-install'] = true;
-    this.skyward.run({}, function () {
-      helpers.assertFiles(expected);
-      done();
-    });
+    ]);
   });
 });
