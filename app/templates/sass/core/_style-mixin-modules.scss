@@ -65,13 +65,29 @@
 	}
 }
 
+// # カラムレイアウト（基本）
+//
+// ## 引数:
+// * `margin`: カラム間マージンサイズ
+@mixin lyt-column($margin: 20px) {
+	.lyt-column{
+		>.column{
+			float: left;
+			margin-right: $margin;
+			&:last-child{
+				margin-right: 0;
+			}
+		}
+	}
+}
+
 
 // # 注釈リスト
 //
 // ## 引数:
 // なし
 @mixin list-notice {
-	li{
+	>li{
 		position: relative;
 		padding-left: 1.2em;
 		_zoom: 1;
@@ -88,7 +104,7 @@
 // ## 引数:
 // * `margin-left`: 左マージンサイズ
 @mixin list-ordered($margin-left: 25px) {
-	li{
+	>li{
 		margin-left: $margin-left;
 		list-style: decimal outside;
 	}
