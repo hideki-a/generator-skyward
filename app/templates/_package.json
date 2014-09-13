@@ -20,7 +20,6 @@
     "grunt-exec": "~0.4.6",
     "grunt-contrib-csslint": "~0.2.0",
     "grunt-csscomb": "~3.0.0",
-    "grunt-imageoptim": "~1.4.1",
     "grunt-combine-media-queries": "~1.0.19",
     "grunt-contrib-cssmin": "~0.10.0",
     "connect-livereload": "~0.4.0",

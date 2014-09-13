@@ -89,13 +89,6 @@ module.exports = (grunt) ->
           dest: '../htdocs'
         ]
 
-    imageoptim:
-      src: ['../htdocs']
-      options:
-        jpegMini: false
-        imageAlpha: false,
-        quitAfter: true
-
     jshint:
       options:
         jshintrc: '.jshintrc'
