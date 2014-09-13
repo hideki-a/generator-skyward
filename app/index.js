@@ -78,6 +78,10 @@ SiteGenerator.prototype.sublime = function sublime() {
   }
 };
 
+SiteGenerator.prototype.userlib = function userlib() {
+  this.directory('lib', 'tools/lib');
+};
+
 SiteGenerator.prototype.stylesheet = function stylesheet() {
   this.directory('sass', 'htdocs/_scss');
   this.template('config.rb', 'tools/config.rb');

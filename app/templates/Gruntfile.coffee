@@ -2,6 +2,7 @@
 LIVERELOAD_PORT = 35729
 lrSnippet = require('connect-livereload')({ port: LIVERELOAD_PORT })
 proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest
+checkForModifiedImports = require('./lib/grunt-newer-util').checkForModifiedImports
 mountFolder = (connect, dir) ->
   return connect.static(require('path').resolve(dir))
 
@@ -16,8 +17,15 @@ module.exports = (grunt) ->
         precision: 3
 
       default:
-        files:
-          '../htdocs/common/css/basic.css': '../htdocs/_scss/basic.scss'
+        # files:
+        #   '../htdocs/common/css/basic.css': '../htdocs/_scss/basic.scss'
+        files: [
+          expand: true
+          cwd: '../htdocs/_scss'
+          src: ['*.scss']
+          dest: '../htdocs/common/css'
+          ext: '.css'
+        ]
         options:
           style: 'expanded'
 
@@ -47,8 +55,8 @@ module.exports = (grunt) ->
       sass:
         files: '../htdocs/**/*.scss'
         tasks: [
-          'sass:default'
-          'autoprefixer:dist'
+          'newer:sass:default'
+          'newer:autoprefixer:dist'
         ]
 
       static:
@@ -67,7 +75,7 @@ module.exports = (grunt) ->
         ]
         map: true
       dist:
-        src: '../htdocs/common/css/basic.css'
+        src: '../htdocs/common/css/*.css'
 
     image:
       all:
@@ -143,14 +151,18 @@ module.exports = (grunt) ->
       validator:
         cmd: 'site_validator test/sitemap.xml test/validator/report.html'
 
+    newer:
+      options:
+        override: checkForModifiedImports
+
   # Load grunt tasks.
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks)
   grunt.loadNpmTasks 'grunt-image'
 
   # Register tasks.
   grunt.registerTask 'default', [
-    'sass:default'
-    'autoprefixer:dist'
+    'newer:sass:default'
+    'newer:autoprefixer:dist'
     'configureProxies'
     'connect'
     'watch'
