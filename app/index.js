@@ -96,6 +96,7 @@ SiteGenerator.prototype.app = function app() {
   this.mkdir('htdocs/common');
   this.mkdir('htdocs/common/js');
   this.mkdir('htdocs/common/css');
+  this.mkdir('htdocs/common/css/extra');
   this.mkdir('htdocs/common/images');
   this.mkdir('materials');
   this.mkdir('backup');

@@ -4,6 +4,7 @@ backup/
 archives/
 materials/
 test/
-htdocs/common/css/basic.css
+htdocs/common/css/*.css
+htdocs/common/css/*.map
 images/sprt-*
 *.sublime-*
