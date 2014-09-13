@@ -40,11 +40,14 @@ module.exports = (grunt) ->
               proxySnippet
               mountFolder(connect, '../htdocs')
             ]
-          open: 'http://localhost:<%= connect.livereload.options.port %>'
+          open:
+            target: 'http://localhost:<%= connect.livereload.options.port %>'
+            appName: 'Google Chrome'
       proxies: [
         context: '/contact'
         host: '<%= pkg.name %>.localhost'
-        changeOrigin: true
+        headers:
+          'Host': '<%= pkg.name %>.localhost'
       ]
     
     watch:
@@ -83,6 +86,7 @@ module.exports = (grunt) ->
           expand: true
           cwd: '../htdocs'
           src: ['**/*.{png,jpg,svg}']
+          dest: '../htdocs'
         ]
 
     imageoptim:
@@ -149,7 +153,7 @@ module.exports = (grunt) ->
 
     exec:
       validator:
-        cmd: 'site_validator test/sitemap.xml test/validator/report.html'
+        cmd: 'env W3C_MARKUP_VALIDATOR_URI=http://`boot2docker ip | sed -e "s/is\:\s([0-9\.]+)$/$1/"`/check site_validator ../test/sitemap.xml ../test/validation_report.html'
 
     newer:
       options:
@@ -183,6 +187,9 @@ module.exports = (grunt) ->
     'newer:image:all'
   ]
 
-  grunt.registerTask 'server', ['connect:livereload:keepalive']
+  grunt.registerTask 'server', [
+    'configureProxies'
+    'connect:livereload:keepalive'
+  ]
 
   return;
