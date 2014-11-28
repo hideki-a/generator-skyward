@@ -7,19 +7,20 @@ mountFolder = (connect, dir) ->
   return connect.static(require('path').resolve(dir))
 
 module.exports = (grunt) ->
-  require('jit-grunt') grunt
+  require('jit-grunt') grunt,
+    xmlsitemap: 'grunt-simple-xmlsitemap'
   grunt.loadNpmTasks 'grunt-connect-proxy'    # https://github.com/drewzboto/grunt-connect-proxy/issues/56
+  ip = require('ip')
 
   grunt.initConfig
     pkg: grunt.file.readJSON 'package.json'
 
     sass:
       options:
-        # sourcemap: none
         compass: true
         precision: 3
 
-      default:
+      dev:
         # files:
         #   '../htdocs/common/css/basic.css': '../htdocs/_scss/basic.scss'
         files: [
@@ -31,6 +32,17 @@ module.exports = (grunt) ->
         ]
         options:
           style: 'expanded'
+      dist:
+        files: [
+          expand: true
+          cwd: '../htdocs/_scss'
+          src: ['*.scss']
+          dest: '../htdocs/common/css'
+          ext: '.css'
+        ]
+        options:
+          style: 'expanded'
+          sourcemap: 'none'
 
     connect:
       livereload:
@@ -61,8 +73,8 @@ module.exports = (grunt) ->
       sass:
         files: '../htdocs/**/*.scss'
         tasks: [
-          'newer:sass:default'
-          'newer:autoprefixer:dist'
+          'sass:dev'
+          'autoprefixer:dist'
         ]
 
       static:
@@ -70,6 +82,9 @@ module.exports = (grunt) ->
           '../htdocs/**/*.html'
           '../htdocs/**/*.js'
         ]
+
+      gruntfile:
+        files: 'Gruntfile.coffee'
 
     autoprefixer:
       options:
@@ -96,7 +111,8 @@ module.exports = (grunt) ->
       options:
         jshintrc: '.jshintrc'
       all: [
-        'path/to/script.js'
+        '../htdocs/**/*.js'
+        '!../htdocs/common/js/components/*.js'
       ]
 
     uglify:
@@ -138,7 +154,11 @@ module.exports = (grunt) ->
       dist:
         files: [
           expand: true
-          src: ['../htdocs/**/*.css']
+          src: [
+            '../htdocs/**/*.css'
+            '!../htdocs/**/*.min.css'
+          ]
+          ext: '.min.css'
         ]
 
     xmlsitemap:
@@ -146,28 +166,24 @@ module.exports = (grunt) ->
       dest: '../test/sitemap.xml'
       options:
         exclude: ['/_scss', '/tmpl']
-        host: 'http://foo.localhost'
+        host: 'http://' + ip.address() + ':3501'
         base: '../htdocs'
 
     exec:
       validator:
-        cmd: 'env W3C_MARKUP_VALIDATOR_URI=http://`boot2docker ip | sed -e "s/is\:\s([0-9\.]+)$/$1/"`/check site_validator ../test/sitemap.xml ../test/validation_report.html'
+        cmd: 'export W3C_MARKUP_VALIDATOR_URI=http://`boot2docker ip | sed -e "s/is\:\s([0-9\.]+)$/$1/"`/check && site_validator ../test/sitemap.xml ../test/validation_report.html'
 
-    newer:
-      options:
-        override: checkForModifiedImports
+    # newer:
+    #   options:
+    #     override: checkForModifiedImports
 
   # Register tasks.
   grunt.registerTask 'default', [
-    'newer:sass:default'
-    'newer:autoprefixer:dist'
+    'sass:dev'
+    'autoprefixer:dist'
     'configureProxies'
     'connect'
     'watch'
-  ]
-
-  grunt.registerTask 'imagemin', [
-    'newer:image:all'
   ]
 
   grunt.registerTask 'publish', [
@@ -178,7 +194,7 @@ module.exports = (grunt) ->
     'csscomb'
     'cmq'
     'cssmin'
-    'newer:image:all'
+    'image:all'
   ]
 
   grunt.registerTask 'server', [
