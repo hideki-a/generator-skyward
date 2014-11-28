@@ -7,6 +7,9 @@ mountFolder = (connect, dir) ->
   return connect.static(require('path').resolve(dir))
 
 module.exports = (grunt) ->
+  require('jit-grunt') grunt
+  grunt.loadNpmTasks 'grunt-connect-proxy'    # https://github.com/drewzboto/grunt-connect-proxy/issues/56
+
   grunt.initConfig
     pkg: grunt.file.readJSON 'package.json'
 
@@ -151,10 +154,6 @@ module.exports = (grunt) ->
     newer:
       options:
         override: checkForModifiedImports
-
-  # Load grunt tasks.
-  require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks)
-  grunt.loadNpmTasks 'grunt-image'
 
   # Register tasks.
   grunt.registerTask 'default', [
