@@ -127,10 +127,12 @@ module.exports = (grunt) ->
           '!../htdocs/common/css/extras/*.css'
         ]
 
-    cmq:
-      dist:
-        files:
-          '../htdocs/path/to/css/' : ['../htdocs/path/to/*.css']    # Overwriting
+    combine_mq:
+      default_options:
+        expand: true
+        cwd: '../htdocs/path/to/css/'
+        src: '*.css'
+        dest: '../htdocs/path/to/css/'
 
     cssmin:
       dist:
