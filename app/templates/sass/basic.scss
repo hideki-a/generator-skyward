@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
 @import "setting";
+@import "mixins";
 @import "core";
 
 @include reset-common;
