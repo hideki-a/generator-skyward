@@ -1,4 +1,4 @@
-# <%= _.slugify(appname) %>
+# <%= appname %>
 
 ## Note
 
