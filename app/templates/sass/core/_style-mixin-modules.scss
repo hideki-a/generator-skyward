@@ -161,7 +161,7 @@
 @mixin grid-lastrows-utility($column, $nestlevel: 2) {
 	$selector: &;
 	&:nth-child(#{$column}n+1):nth-last-child(-n+#{$column}),
-	&:nth-child(#{$column}n+1):nth-last-child(-n+#{$column}) ~ #{nth(nth($selector, 1),$nestlevel)}{
+	&:nth-child(#{$column}n+1):nth-last-child(-n+#{$column}) ~ #{nth($selector, 1)}{
 		margin-bottom: 0;
 	}
 }
