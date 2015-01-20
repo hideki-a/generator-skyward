@@ -4,5 +4,5 @@
 
 ### Generator
 
-* [generator-skyward](https://www.npmjs.com/package/generator-skyward)
+* [generator-skyward](https://www.npmjs.com/package/generator-skyward) <%= pkg.version %>
 

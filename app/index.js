@@ -1,4 +1,5 @@
 'use strict';
+var path = require('path');
 var util = require('util');
 var yeoman = require('yeoman-generator');
 
@@ -21,7 +22,7 @@ var SiteGenerator = module.exports = function SiteGenerator(args, options, confi
 
   this.appPath = process.cwd();
 
-  // this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
+  this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
 };
 
 util.inherits(SiteGenerator, yeoman.generators.Base);
