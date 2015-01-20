@@ -10,6 +10,7 @@ module.exports = (grunt) ->
   require('jit-grunt') grunt,
     xmlsitemap: 'grunt-simple-xmlsitemap'
   grunt.loadNpmTasks 'grunt-connect-proxy'    # https://github.com/drewzboto/grunt-connect-proxy/issues/56
+  grunt.loadNpmTasks 'grunt-notify'
   ip = require('ip')
 
   grunt.initConfig
