@@ -3,6 +3,7 @@ LIVERELOAD_PORT = 35729
 lrSnippet = require('connect-livereload')({ port: LIVERELOAD_PORT })
 proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest
 checkForModifiedImports = require('./lib/grunt-newer-util').checkForModifiedImports
+connectSSI = require('connect-ssi')
 mountFolder = (connect, dir) ->
   return connect.static(require('path').resolve(dir))
 
@@ -54,6 +55,10 @@ module.exports = (grunt) ->
             return [
               lrSnippet
               proxySnippet
+              connectSSI(
+                baseDir: __dirname.replace("/tools", "/htdocs")
+                ext: ".html"
+              )
               mountFolder(connect, '../htdocs')
             ]
           open:

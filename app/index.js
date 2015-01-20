@@ -90,6 +90,7 @@ SiteGenerator.prototype.stylesheet = function stylesheet() {
 };
 
 SiteGenerator.prototype.htmlTmpl = function htmlTmpl() {
+  this.directory('include', 'htdocs/include');
   this.copy('index.html', 'htdocs/index.html');
 };
 
