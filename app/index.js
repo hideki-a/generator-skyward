@@ -57,6 +57,7 @@ SiteGenerator.prototype.packageJSON = function packageJSON() {
 SiteGenerator.prototype.rootconfig = function rootconfig() {
   this.copy('gitignore', '.gitignore');
   this.copy('editorconfig', '.editorconfig');
+  this.template('README.md', 'README.md');
 };
 
 SiteGenerator.prototype.bower = function bower() {
