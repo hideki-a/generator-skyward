@@ -1,6 +1,7 @@
 tools/node_modules/
 bower_components/
 backup/
+documents/
 archives/
 materials/
 test/
