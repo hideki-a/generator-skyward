@@ -18,7 +18,7 @@ module.exports = (grunt) ->
 
     sass:
       options:
-        compass: true
+        # compass: true
         precision: 3
 
       dev:
@@ -75,7 +75,9 @@ module.exports = (grunt) ->
         files: '../htdocs/**/*.scss'
         tasks: [
           'sass:dev'
-          'autoprefixer:dist'
+          'autoprefixer:dev'
+          # 'newer:sass:dev'
+          # 'newer:autoprefixer:dev'
         ]
 
       static:
@@ -95,9 +97,14 @@ module.exports = (grunt) ->
           'ie 9'
           'ie 8'
         ]
-        map: true
+      dev:
+        src: '../htdocs/common/css/*.css'
+        options:
+          map: true
       dist:
         src: '../htdocs/common/css/*.css'
+        options:
+          map: false
 
     image:
       all:
@@ -181,7 +188,7 @@ module.exports = (grunt) ->
   # Register tasks.
   grunt.registerTask 'default', [
     'sass:dev'
-    'autoprefixer:dist'
+    'autoprefixer:dev'
     'configureProxies'
     'connect'
     'watch'
@@ -191,9 +198,11 @@ module.exports = (grunt) ->
     # 'jshint'
     # 'concat'
     # 'uglify'
+    'sass:dist'
+    'autoprefixer:dist'
     'csslint'
     'csscomb'
-    'cmq'
+    'combine_mq'
     'cssmin'
     'image:all'
   ]
