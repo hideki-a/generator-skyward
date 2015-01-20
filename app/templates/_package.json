@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "main": "Gruntfile.coffee",
   "scripts": {
-    "postinstall": "npm link grunt-image"
+    "postinstall": "npm link grunt-image;cd node_modules/connect-ssi/node_modules/node-ssi; curl -O https://raw.githubusercontent.com/hideki-a/node-ssi/patch-1/index.js"
   },
   "dependencies": {},
   "devDependencies": {
