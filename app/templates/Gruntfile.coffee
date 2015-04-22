@@ -150,18 +150,20 @@ module.exports = (grunt) ->
           csslintrc: '.csslintrc'
 
     csscomb:
-      files:
+      dynamic_map:
+        expand: true
         src: [
           '../htdocs/**/*.css'
           '!../htdocs/common/css/extras/*.css'
         ]
+        dest: '../htdocs/**/*.css'
 
     combine_mq:
       default_options:
         expand: true
-        cwd: '../htdocs/path/to/css/'
+        cwd: '../htdocs/common/css/'
         src: '*.css'
-        dest: '../htdocs/path/to/css/'
+        dest: '../htdocs/common/css/'
 
     cssmin:
       dist:
@@ -171,7 +173,7 @@ module.exports = (grunt) ->
             '../htdocs/**/*.css'
             '!../htdocs/**/*.min.css'
           ]
-          ext: '.min.css'
+          ext: '.css'
         ]
 
     xmlsitemap:
