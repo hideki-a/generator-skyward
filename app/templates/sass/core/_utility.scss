@@ -55,6 +55,19 @@
 }
 
 
+// Media Query
+// Inspiration: http://robots.thoughtbot.com/sasss-content-directive
+@mixin mq($width) {
+	@if unitless($width) {
+		$width: $width + px;
+	}
+
+	@media only screen and (max-width: $width) {
+		@content;
+	}
+}
+
+
 // # インラインブロック
 //
 // ## 引数:
