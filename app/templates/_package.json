@@ -1,5 +1,5 @@
 {
-  "name": "<%= appname %>",
+  "name": "<%= _.slugify(appname) %>",
   "description": "",
   "version": "0.0.0",
   "main": "Gruntfile.coffee",
