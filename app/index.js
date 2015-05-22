@@ -86,6 +86,7 @@ SiteGenerator.prototype.userlib = function userlib() {
 
 SiteGenerator.prototype.stylesheet = function stylesheet() {
   this.directory('sass', 'htdocs/_scss');
+  this.directory('hologramStuff', 'tools/hologramStuff');
   this.template('config.rb', 'tools/config.rb');
 };
 

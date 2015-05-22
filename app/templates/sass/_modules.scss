@@ -20,6 +20,27 @@
 // -----------------------------------------------------------
 // Headings
 // -----------------------------------------------------------
+//doc
+// ---
+// title: 見出し1
+// name: heading01
+// category: Modules
+// ---
+
+// 見出しパターン1です。主にページタイトルとして利用します。
+
+// ```html_example
+// <div class="hdg-01-container">
+// <h1 class="hdg-01">会社情報 <span class="en" lang="en">Corporate Information</span></h1>
+// </div><!-- /.hdg-01-container -->
+// ```
+//docend
+.hdg-01{
+	font-size: rs(28,$basefz);
+	.en{
+		font-size: rs(14,28);
+	}
+}
 
 
 // -----------------------------------------------------------

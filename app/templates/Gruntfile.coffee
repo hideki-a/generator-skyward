@@ -5,6 +5,7 @@ ssi = require 'browsersync-ssi'
 module.exports = (grunt) ->
   require('jit-grunt') grunt,
     xmlsitemap: 'grunt-simple-xmlsitemap'
+    replace: 'grunt-text-replace'
   grunt.loadNpmTasks 'grunt-notify'
   ip = require('ip')
 
@@ -177,10 +178,41 @@ module.exports = (grunt) ->
     exec:
       validator:
         cmd: 'export W3C_MARKUP_VALIDATOR_URI=http://`boot2docker ip | sed -e "s/is\:\s([0-9\.]+)$/$1/"`/check && site_validator ../test/sitemap.xml ../test/validation_report.html'
+      hologram:
+        cmd: '(cd hologramStuff; bundle exec hologram config.yml; cd ../)'
 
     # newer:
     #   options:
     #     override: checkForModifiedImports
+
+    # Settings for Hologram
+    replace:
+      styleguide_css:
+        src: ['../docs/styleguide/common/css/*.css']
+        dest: '../docs/styleguide/common/css/'
+        replacements: [
+          {
+            from: /\/common\/(images|fonts)/g
+            to: '../$1'
+          },
+          {
+            from: /\(\/(images|_dev)/g
+            to: '(../../$1'
+          },
+        ]
+      styleguide_html:
+        src: ['../docs/styleguide/*.html']
+        dest: '../docs/styleguide/'
+        replacements: [
+          {
+            from: '/common/images'
+            to: 'common/images'
+          },
+          {
+            from: /"\/(images|_dev)/g
+            to: '"$1'
+          },
+        ]
 
   # Register tasks.
   grunt.registerTask 'default', [
@@ -205,6 +237,13 @@ module.exports = (grunt) ->
 
   grunt.registerTask 'serve', [
     'browserSync:serve'
+  ]
+
+  grunt.registerTask 'styleguide', [
+    'sass:dist'
+    'autoprefixer:dist'
+    'exec:hologram'
+    'replace'
   ]
 
   return;
