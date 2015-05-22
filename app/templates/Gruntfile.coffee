@@ -1,5 +1,6 @@
 'use strict'
 checkForModifiedImports = require('./lib/grunt-newer-util').checkForModifiedImports
+ssi = require 'browsersync-ssi'
 
 module.exports = (grunt) ->
   require('jit-grunt') grunt,
@@ -42,6 +43,10 @@ module.exports = (grunt) ->
         port: 3501
         server:
           baseDir: '../htdocs'
+          middleware: ssi(
+              baseDir: __dirname + '/../htdocs'
+              ext: '.html'
+            )
         # proxy: '<%= pkg.name %>.localhost'
       dev:
         bsFiles:
