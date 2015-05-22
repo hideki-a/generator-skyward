@@ -5,11 +5,12 @@ Yeoman generator for scaffolding out a website.
 
 ## Features
 
-* Built-in preview server with LiveReload
-* Automagically compile Sass
+* Built-in preview server
+* Automagically compile Sass(with Libsass)
 * Lint your scripts
 * Automagically wire up your Bower components.
 * Awesome Image Optimization
+* Generate Styleguide
 
 For more information on what `generator-skyward` can do for you, take a look at the [Grunt tasks](https://github.com/hideki-a/generator-skyward/blob/master/app/templates/Gruntfile.coffee) used in our `Gruntfile.coffee`.
 
@@ -18,7 +19,7 @@ For more information on what `generator-skyward` can do for you, take a look at 
 - Install: `npm install -g generator-skyward`
 - Run: `yo skyward`
 - `cd tools`
-- Run: `grunt` for building
+- Run: `npm start`(or `grunt`) for building
 
 ## Options
 
