@@ -63,10 +63,6 @@ module.exports = (grunt) ->
           watchTask: false
     
     watch:
-      options:
-        nospawn: true
-        livereload: true
-
       sass:
         files: '../htdocs/**/*.scss'
         tasks: [
@@ -74,12 +70,6 @@ module.exports = (grunt) ->
           'autoprefixer:dev'
           # 'newer:sass:dev'
           # 'newer:autoprefixer:dev'
-        ]
-
-      static:
-        files: [
-          '../htdocs/**/*.html'
-          '../htdocs/**/*.js'
         ]
 
       gruntfile:
