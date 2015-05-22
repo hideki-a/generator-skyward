@@ -67,6 +67,16 @@
 	}
 }
 
+@mixin mq-min($width) {
+	@if unitless($width) {
+		$width: $width + px;
+	}
+
+	@media only screen and (min-width: $width) {
+		@content;
+	}
+}
+
 
 // # インラインブロック
 //
