@@ -1,16 +1,9 @@
 'use strict'
-LIVERELOAD_PORT = 35729
-lrSnippet = require('connect-livereload')({ port: LIVERELOAD_PORT })
-proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest
 checkForModifiedImports = require('./lib/grunt-newer-util').checkForModifiedImports
-connectSSI = require('connect-ssi')
-mountFolder = (connect, dir) ->
-  return connect.static(require('path').resolve(dir))
 
 module.exports = (grunt) ->
   require('jit-grunt') grunt,
     xmlsitemap: 'grunt-simple-xmlsitemap'
-  grunt.loadNpmTasks 'grunt-connect-proxy'    # https://github.com/drewzboto/grunt-connect-proxy/issues/56
   grunt.loadNpmTasks 'grunt-notify'
   ip = require('ip')
 
@@ -43,30 +36,25 @@ module.exports = (grunt) ->
           outputStyle: 'expanded'
           sourceMap: false
 
-    connect:
-      livereload:
+    browserSync:
+      options:
+        # host: '192.168.24.15'
+        port: 3501
+        server:
+          baseDir: '../htdocs'
+        # proxy: '<%= pkg.name %>.localhost'
+      dev:
+        bsFiles:
+          src: [
+            '../htdocs/**/*.html'
+            '../htdocs/**/*.css'
+            '../htdocs/**/*.js'
+          ]
         options:
-          hostname: '0.0.0.0'
-          port: 3501
-          middleware: (connect, options) ->
-            return [
-              lrSnippet
-              proxySnippet
-              connectSSI(
-                baseDir: __dirname.replace("/tools", "/htdocs")
-                ext: ".html"
-              )
-              mountFolder(connect, '../htdocs')
-            ]
-          open:
-            target: 'http://localhost:<%= connect.livereload.options.port %>'
-            appName: 'Google Chrome'
-      proxies: [
-        context: '/contact'
-        host: '<%= pkg.name %>.localhost'
-        headers:
-          'Host': '<%= pkg.name %>.localhost'
-      ]
+          watchTask: true
+      serve:
+        options:
+          watchTask: false
     
     watch:
       options:
@@ -193,8 +181,7 @@ module.exports = (grunt) ->
   grunt.registerTask 'default', [
     'sass:dev'
     'autoprefixer:dev'
-    'configureProxies'
-    'connect'
+    'browserSync:dev'
     'watch'
   ]
 
@@ -211,9 +198,8 @@ module.exports = (grunt) ->
     'image:all'
   ]
 
-  grunt.registerTask 'server', [
-    'configureProxies'
-    'connect:livereload:keepalive'
+  grunt.registerTask 'serve', [
+    'browserSync:serve'
   ]
 
   return;
