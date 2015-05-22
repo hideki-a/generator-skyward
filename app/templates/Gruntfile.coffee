@@ -19,13 +19,9 @@ module.exports = (grunt) ->
 
     sass:
       options:
-        # compass: true
         precision: 3
-
       dev:
-        # files:
-        #   '../htdocs/common/css/basic.css': '../htdocs/_scss/basic.scss'
-        files: [
+       files: [
           expand: true
           cwd: '../htdocs/_scss'
           src: ['*.scss']
@@ -33,7 +29,8 @@ module.exports = (grunt) ->
           ext: '.css'
         ]
         options:
-          style: 'expanded'
+          outputStyle: 'expanded'
+          sourceMap: true
       dist:
         files: [
           expand: true
@@ -43,8 +40,8 @@ module.exports = (grunt) ->
           ext: '.css'
         ]
         options:
-          style: 'expanded'
-          sourcemap: 'none'
+          outputStyle: 'expanded'
+          sourceMap: false
 
     connect:
       livereload:

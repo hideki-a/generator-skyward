@@ -21,7 +21,7 @@
 	@if $type == sans-serif {
 		font-family: sans-serif;
 		@if $support-ie6 {
-			_font-family: 'MS PGothic', sans-serif#{$important};
+			_font-family: 'MS PGothic', sans-serif;
 		}
 	} @else if $type == hiragino {
 		font-family: 'Hiragino Kaku Gothic Pro', Meiryo, 'MS PGothic', sans-serif;
