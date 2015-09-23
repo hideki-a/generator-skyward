@@ -136,11 +136,9 @@ module.exports = (grunt) ->
     csscomb:
       dynamic_map:
         expand: true
-        src: [
-          '../htdocs/**/*.css'
-          '!../htdocs/common/css/extras/*.css'
-        ]
-        dest: '../htdocs/**/*.css'
+        cwd: '../htdocs/common/css/'
+        src: '*.css'
+        dest: '../htdocs/common/css/'
 
     combine_mq:
       default_options:
