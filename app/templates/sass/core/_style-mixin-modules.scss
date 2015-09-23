@@ -158,10 +158,10 @@
 
 // ## 参考:
 // http://blog.keithclark.co.uk/targeting-first-and-last-rows-in-css-grid-layouts/
-@mixin grid-lastrows-utility($column, $nestlevel: 2) {
+@mixin grid-lastrows-utility($column, $grid-item-tag: "li") {
 	$selector: &;
 	&:nth-child(#{$column}n+1):nth-last-child(-n+#{$column}),
-	&:nth-child(#{$column}n+1):nth-last-child(-n+#{$column}) ~ #{nth($selector, 1)}{
+	&:nth-child(#{$column}n+1):nth-last-child(-n+#{$column}) ~ #{$grid-item-tag}{
 		margin-bottom: 0;
 	}
 }

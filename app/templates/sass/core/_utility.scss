@@ -37,19 +37,23 @@
 //
 // ## 引数:
 // なし
-@mixin clearfix {
-	%clearfix{
-		/* フロートの解除 */    // @charset出力のため、あえてコメントを日本語化している
-		@if $support-ie6 or $support-ie7 {
-			*zoom: 1;
-		}
-		&:before,
-		&:after {
-			content: " ";
-			display: table;
-		}
-		&:after {
-			clear: both;
+$clearfix-defined: false !default;
+@mixin skyward-clearfix {
+	@if not $clearfix-defined {
+		$clearfix-defined: true;
+		%clearfix{
+			/* フロートの解除 */    // @charset出力のため、あえてコメントを日本語化している
+			@if $support-ie6 or $support-ie7 {
+				*zoom: 1;
+			}
+			&:before,
+			&:after {
+				content: " ";
+				display: table;
+			}
+			&:after {
+				clear: both;
+			}
 		}
 	}
 }
@@ -73,6 +77,19 @@
 	}
 
 	@media only screen and (min-width: $width) {
+		@content;
+	}
+}
+
+
+// # マウスオーバー・フォーカススタイル設定
+//
+// ## 引数:
+// なし
+@mixin focus {
+	&:hover,
+	&:active,
+	&:focus{
 		@content;
 	}
 }
