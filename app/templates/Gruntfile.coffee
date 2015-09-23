@@ -15,6 +15,7 @@ module.exports = (grunt) ->
     sass:
       options:
         precision: 3
+        includePaths: require('node-neat').includePaths
       dev:
        files: [
           expand: true

@@ -3,3 +3,16 @@
 // -----------------------------------------------------------
 // Mixins
 // -----------------------------------------------------------
+// # omegaのリセット（Bourbon Neat）
+//
+// http://www.joshfry.me/blog/2013/05/13/omega-reset-for-bourbon-neat
+// ## 引数:
+// * `nth`: リセットしたい子要素（e.g. 3n）
+@mixin omega-reset($nth){
+	&:nth-child(#{$nth}){
+		margin-right: flex-gutter();
+	}
+	&:nth-child(#{$nth}+1){
+		clear: none;
+	}
+}

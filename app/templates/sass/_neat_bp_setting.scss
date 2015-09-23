@@ -1,0 +1,5 @@
+$bp-pcwide: 1189;
+$s-pc: new-breakpoint(max-width 1069px 12);
+$mobile: new-breakpoint(max-width 787px 12);
+$m-mobile: new-breakpoint(max-width 599px 12);
+$s-mobile: new-breakpoint(max-width 479px 6);
