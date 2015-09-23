@@ -4,8 +4,8 @@ ssi = require 'browsersync-ssi'
 
 module.exports = (grunt) ->
   require('jit-grunt') grunt,
-    xmlsitemap: 'grunt-simple-xmlsitemap'
     replace: 'grunt-text-replace'
+    htmllint: 'grunt-html'
   grunt.loadNpmTasks 'grunt-notify'
   ip = require('ip')
 
@@ -157,17 +157,13 @@ module.exports = (grunt) ->
           ext: '.css'
         ]
 
-    xmlsitemap:
-      files: ['../htdocs/**/*.html']
-      dest: '../test/sitemap.xml'
-      options:
-        exclude: ['/_scss', '/tmpl']
-        host: 'http://' + ip.address() + ':3501'
-        base: '../htdocs'
+    htmllint:
+      all: [
+        '../htdocs/**/*.html'
+        '!../htdocs/_scss/**/*.html'
+      ]
 
     exec:
-      validator:
-        cmd: 'export W3C_MARKUP_VALIDATOR_URI=http://`boot2docker ip | sed -e "s/is\:\s([0-9\.]+)$/$1/"`/check && site_validator ../test/sitemap.xml ../test/validation_report.html'
       hologram:
         cmd: '(cd hologramStuff; bundle exec hologram config.yml; cd ../)'
 
