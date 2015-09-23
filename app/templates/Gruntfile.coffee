@@ -59,6 +59,8 @@ module.exports = (grunt) ->
           ]
         options:
           watchTask: true
+          browser: 'Google Chrome'
+          # startPath: '/_dev/'
       serve:
         options:
           watchTask: false
