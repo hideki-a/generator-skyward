@@ -2,7 +2,9 @@
   "name": "<%= _.slugify(appname) %>",
   "version": "0.0.0",
   "dependencies": {
-    "html5shiv": "~3.7.0"
+    "html5shiv": "~3.7.0",
+    "matchMedia": "~0.2.0",
+    "jquery": "jQuery#~2.1.4"
   },
   "devDependencies": {}
 }
