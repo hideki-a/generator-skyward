@@ -32,7 +32,7 @@ module.exports = (grunt) ->
           expand: true
           cwd: '../htdocs/_scss'
           src: ['*.scss']
-          dest: '../htdocs/common/css'
+          dest: '../release/common/css'
           ext: '.css'
         ]
         options:
@@ -91,7 +91,7 @@ module.exports = (grunt) ->
         options:
           map: true
       dist:
-        src: '../htdocs/common/css/*.css'
+        src: '../release/common/css/*.css'
         options:
           map: false
 
@@ -101,7 +101,7 @@ module.exports = (grunt) ->
           expand: true
           cwd: '../htdocs'
           src: ['**/*.{png,jpg,svg}']
-          dest: '../htdocs'
+          dest: '../release'
         ]
 
     jshint:
@@ -136,24 +136,24 @@ module.exports = (grunt) ->
     csscomb:
       dynamic_map:
         expand: true
-        cwd: '../htdocs/common/css/'
+        cwd: '../release/common/css/'
         src: '*.css'
-        dest: '../htdocs/common/css/'
+        dest: '../release/common/css/'
 
     combine_mq:
       default_options:
         expand: true
-        cwd: '../htdocs/common/css/'
+        cwd: '../release/common/css/'
         src: '*.css'
-        dest: '../htdocs/common/css/'
+        dest: '../release/common/css/'
 
     cssmin:
       dist:
         files: [
           expand: true
           src: [
-            '../htdocs/**/*.css'
-            '!../htdocs/**/*.min.css'
+            '../release/**/*.css'
+            '!../release/**/*.min.css'
           ]
           ext: '.css'
         ]
@@ -163,6 +163,21 @@ module.exports = (grunt) ->
         '../htdocs/**/*.html'
         '!../htdocs/_scss/**/*.html'
       ]
+
+    clean:
+      release:
+        src: ['../release/']
+        options:
+          force: true
+
+    copy:
+      release:
+        files: [
+          expand: true
+          cwd: '../htdocs/'
+          src: ['**']
+          dest: '../release/'
+        ]
 
     exec:
       hologram:
@@ -210,12 +225,13 @@ module.exports = (grunt) ->
   ]
 
   grunt.registerTask 'publish', [
+    'clean:release'
+    'copy:release'
     # 'jshint'
     # 'concat'
     # 'uglify'
     'sass:dist'
     'autoprefixer:dist'
-    'csslint'
     'csscomb'
     'combine_mq'
     'cssmin'
