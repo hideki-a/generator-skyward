@@ -108,5 +108,4 @@ SiteGenerator.prototype.app = function app() {
   this.mkdir('materials');
   this.mkdir('backup');
   this.mkdir('test');
-  this.mkdir('test/validator');
 };
