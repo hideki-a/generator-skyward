@@ -1,12 +1,11 @@
 @charset "UTF-8";
 
 @import "setting";
-@import "bourbon";
-@import "neat";
-@import "neat_setting";
+// @import "bourbon";
+// @import "neat";
 @import "mixins";
 @import "core";
-@import "neat_bp_setting";
+// @import "neat_bp_setting";
 
 @include reset-common;
 
