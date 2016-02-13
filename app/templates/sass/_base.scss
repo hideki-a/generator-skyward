@@ -35,4 +35,9 @@ img{
 	height: auto;
 }
 
-@include default-margin(1em,true);
+// @include default-margin(1em,true);
+
+%list-reset{
+	padding: 0;
+	list-style: none;
+}
