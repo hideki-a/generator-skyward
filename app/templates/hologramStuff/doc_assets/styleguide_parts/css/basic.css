@@ -297,6 +297,28 @@ code {
       .list-modules-01 li a:hover, .list-modules-01 li a:focus {
         background-color: #efefef; }
 
+.tbl-01,
+th,
+td{
+  border-style: solid;
+  border-color: #999;
+}
+
+.tbl-01{
+  border-width: 1px 0 0 1px;
+}
+
+.tbl-01 th,
+.tbl-01 td{
+  padding: 5px 10px;
+  border-width: 0 1px 1px 0;
+}
+
+.tbl-01 th{
+  background-color: #efefef;
+  text-align: left;
+}
+
 hll {
   background-color: #ffffcc; }
 
