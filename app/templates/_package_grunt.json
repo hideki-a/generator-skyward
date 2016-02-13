@@ -1,0 +1,17 @@
+{
+  "name": "<%= _.slugify(appname) %>",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-exec": "~0.4.6",
+    "grunt-notify": "^0.4.1",
+    "grunt-text-replace": "^0.3.12",
+    "jit-grunt": "^0.9.0"
+  },
+  "private": true
+}

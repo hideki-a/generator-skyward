@@ -49,7 +49,7 @@ module.exports = (grunt) ->
               baseDir: __dirname + '/../htdocs'
               ext: '.html'
             )
-        # proxy: '<%= pkg.name %>.localhost'
+        # proxy: 'generator-skyward.localhost'
       dev:
         bsFiles:
           src: [
@@ -64,7 +64,7 @@ module.exports = (grunt) ->
       serve:
         options:
           watchTask: false
-    
+
     watch:
       sass:
         files: '../htdocs/**/*.scss'
@@ -180,8 +180,10 @@ module.exports = (grunt) ->
         ]
 
     exec:
-      hologram:
+      hologram_pc:
         cmd: '(cd hologramStuff; bundle exec hologram config.yml; cd ../)'
+      hologram_sp:
+        cmd: '(cd hologramStuff; bundle exec hologram config_sp.yml; cd ../)'
 
     # newer:
     #   options:
@@ -189,29 +191,63 @@ module.exports = (grunt) ->
 
     # Settings for Hologram
     replace:
-      styleguide_css:
-        src: ['../docs/styleguide/common/css/*.css']
-        dest: '../docs/styleguide/common/css/'
+      styleguide_css_pc:
+        src: ['../docs/styleguide_pc/common/css/*.css']
+        dest: '../docs/styleguide_pc/common/css/'
         replacements: [
           {
-            from: /\/common\/(images|fonts)/g
+            from: /\/english\/common\/(images|fonts)/g
             to: '../$1'
           },
           {
-            from: /\(\/(images|_dev)/g
+            from: /\(\/english\/(images|_dev)/g
             to: '(../../$1'
           },
+          {
+            from: /body(\s*?){/g
+            to: ':host$1{'
+          },
         ]
-      styleguide_html:
-        src: ['../docs/styleguide/*.html']
-        dest: '../docs/styleguide/'
+      styleguide_html_pc:
+        src: ['../docs/styleguide_pc/*.html']
+        dest: '../docs/styleguide_pc/'
         replacements: [
           {
-            from: '/common/images'
+            from: '/english/common/images'
             to: 'common/images'
           },
           {
-            from: /"\/(images|_dev)/g
+            from: /"\/english\/(images|_dev)/g
+            to: '"$1'
+          },
+        ]
+      styleguide_css_sp:
+        src: ['../docs/styleguide_sp/common/css/*.css']
+        dest: '../docs/styleguide_sp/common/css/'
+        replacements: [
+          {
+            from: /\/english\/sp\/common\/(images|fonts)/g
+            to: '../$1'
+          },
+          {
+            from: /\(\/english\/sp\/(images|_dev)/g
+            to: '(../../$1'
+          },
+          {
+            from: /body(\s*?){/g
+            to: ':host$1{'
+          },
+        ]
+      styleguide_html_sp:
+        src: ['../docs/styleguide_sp/*.html']
+        dest: '../docs/styleguide_sp/'
+        replacements: [
+          {
+            from: '/english/sp/common/images'
+            to: 'common/images'
+          },
+          {
+            from: /"\/english\/sp\/(images|_dev)/g
             to: '"$1'
           },
         ]
@@ -242,11 +278,19 @@ module.exports = (grunt) ->
     'browserSync:serve'
   ]
 
-  grunt.registerTask 'styleguide', [
-    'sass:dist'
-    'autoprefixer:dist'
-    'exec:hologram'
-    'replace'
+  grunt.registerTask 'styleguide_pc', [
+    # 'sass:dist'
+    # 'autoprefixer:dist'
+    'exec:hologram_pc'
+    'replace:styleguide_css_pc'
+    'replace:styleguide_html_pc'
   ]
 
+  grunt.registerTask 'styleguide_sp', [
+    # 'sass:dist'
+    # 'autoprefixer:dist'
+    'exec:hologram_sp'
+    'replace:styleguide_css_sp'
+    'replace:styleguide_html_sp'
+  ]
   return;

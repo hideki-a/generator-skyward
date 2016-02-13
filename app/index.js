@@ -48,11 +48,11 @@ SiteGenerator.prototype.askFor = function askFor() {
 };
 
 SiteGenerator.prototype.gruntfile = function gruntfile() {
-  this.copy('Gruntfile.coffee', 'tools/Gruntfile.coffee');
+  this.copy('Gruntfile.coffee', 'tools_grunt/Gruntfile.coffee');
 };
 
 SiteGenerator.prototype.packageJSON = function packageJSON() {
-  this.template('_package.json', 'tools/package.json');
+  this.template('_package_grunt.json', 'tools_grunt/package.json');
 };
 
 SiteGenerator.prototype.rootconfig = function rootconfig() {
@@ -79,13 +79,9 @@ SiteGenerator.prototype.sublime = function sublime() {
   }
 };
 
-SiteGenerator.prototype.userlib = function userlib() {
-  this.directory('lib', 'tools/lib');
-};
-
 SiteGenerator.prototype.stylesheet = function stylesheet() {
   this.directory('sass', 'htdocs/_scss');
-  this.directory('hologramStuff', 'tools/hologramStuff');
+  this.directory('hologramStuff', 'tools_grunt/hologramStuff');
 };
 
 SiteGenerator.prototype.htmlTmpl = function htmlTmpl() {
