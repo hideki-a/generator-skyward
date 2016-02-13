@@ -1,4 +1,5 @@
 tools/node_modules/
+tools_grunt/node_modules/
 bower_components/
 backup/
 release/
@@ -10,3 +11,5 @@ htdocs/common/css/*.css
 htdocs/common/css/*.map
 images/sprt-*
 *.sublime-*
+tools/.tmp/
+npm-debug.log
