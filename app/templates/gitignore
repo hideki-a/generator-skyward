@@ -2,7 +2,7 @@ tools/node_modules/
 tools_grunt/node_modules/
 bower_components/
 backup/
-release/
+dist/
 documents/
 archives/
 materials/
