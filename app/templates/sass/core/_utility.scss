@@ -88,28 +88,3 @@ $clearfix-defined: false !default;
 		@content;
 	}
 }
-
-
-// # インラインブロック
-//
-// ## 引数:
-// * `set-haslayout`: hasLayoutをtrueにするコードの出力有無。
-@mixin inline-block($set-haslayout: true) {
-	display: inline-block;
-	@if $support-ie6 or $support-ie7 {
-		*display: inline;
-		@if set-haslayout {
-			*zoom: 1;
-		}
-		*vertical-align: top;
-	}
-}
-
-
-// # CSS3 PIE
-//
-// ## 引数:
-// なし
-@mixin pie {
-	behavior: url($pie-url);
-}
