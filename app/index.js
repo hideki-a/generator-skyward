@@ -66,9 +66,8 @@ SiteGenerator.prototype.bower = function bower() {
   this.copy('_bower.json', 'tools/bower.json');
 };
 
-SiteGenerator.prototype.jshint = function jshint() {
-  this.copy('jshintrc', 'tools/.jshintrc');
-};
+// SiteGenerator.prototype.jshint = function jshint() {
+// };
 
 SiteGenerator.prototype.csslint = function csslint() {
   this.copy('csslintrc', 'tools/.csslintrc');
