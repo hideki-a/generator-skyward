@@ -76,7 +76,7 @@
 		text-align: left;
 	}
 	
-	input, select, textarea{
+	input, select, textarea, button{
 		vertical-align: middle;
 		font-size: inherit;
 	}
@@ -84,7 +84,8 @@
 	@if $doc-html5{
 		// HTML5 display-role reset for older browsers
 		article, section, aside, header, footer, nav, address,
-		hgroup, figcaption, figure{
+		hgroup, figcaption, figure,
+		main{
 			display: block;
 		}
 	}

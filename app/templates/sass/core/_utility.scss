@@ -88,3 +88,52 @@ $clearfix-defined: false !default;
 		@content;
 	}
 }
+
+
+// # テーブルのスクロール
+//
+// ## 引数:
+// * `bp`: ブレークポイント
+@mixin tbl-scroll($bp:767){
+	@if unitless($bp) {
+		$bp: $bp + px;
+	}
+
+	display: table;
+	width: 100%;
+	@include screen and (max-width: $bp) {
+		display: block;
+		overflow-x: auto;
+		margin: 0 0 1em;
+		&::-webkit-scrollbar{
+			-webkit-appearance: none;
+			width: 14px;
+			height: 14px;
+		}
+		&::-webkit-scrollbar-thumb{
+			border-radius: 8px;
+			border: 3px solid #fff;
+			background-color: rgba(0, 0, 0, .3);
+		}
+	}
+}
+
+
+// # オブジェクトの埋め込み（マルチスクリーン対応）
+// レスポンシブWebデザインのページにGoogle Mapsなどを埋め込む際に利用
+// 
+// ## 引数:
+// なし
+@mixin embed-responsive-object{
+	position: relative;
+	overflow: hidden;
+	padding-bottom: 56%;
+	height: 0;
+	iframe{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100% !important;
+		height: 100% !important;
+	}
+}
