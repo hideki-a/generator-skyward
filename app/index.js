@@ -47,12 +47,15 @@ SiteGenerator.prototype.askFor = function askFor() {
   }.bind(this));
 };
 
-SiteGenerator.prototype.gruntfile = function gruntfile() {
+SiteGenerator.prototype.taskrunner = function taskrunner() {
   this.copy('Gruntfile.coffee', 'tools_grunt/Gruntfile.coffee');
+  this.copy('gulpfile.babel.js', 'tools/gulpfile.babel.js');
+  this.copy('babelrc', 'tools/.babelrc');
 };
 
 SiteGenerator.prototype.packageJSON = function packageJSON() {
   this.template('_package_grunt.json', 'tools_grunt/package.json');
+  this.template('_package.json', 'tools/package.json');
 };
 
 SiteGenerator.prototype.rootconfig = function rootconfig() {
@@ -66,8 +69,9 @@ SiteGenerator.prototype.bower = function bower() {
   this.copy('_bower.json', 'tools/bower.json');
 };
 
-// SiteGenerator.prototype.jshint = function jshint() {
-// };
+SiteGenerator.prototype.eslint = function jshint() {
+  this.copy('eslintrc', 'tools/.eslintrc');
+};
 
 SiteGenerator.prototype.csslint = function csslint() {
   this.copy('csslintrc', 'tools/.csslintrc');
