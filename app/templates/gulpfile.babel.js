@@ -111,10 +111,12 @@ gulp.task('copy', () =>
 );
 
 // Serve
+// ghostMode: Clicks, Scrolls & Form inputs on any device will be mirrored to all others.
 gulp.task('serve', () => {
   browserSync({
     server: '../htdocs/',
     port: 3501,
+    ghostMode: false,
     browser: 'google chrome',
     startPath: '/',
     middleware: browserSyncSSI({
