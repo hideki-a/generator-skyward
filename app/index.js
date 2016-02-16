@@ -88,6 +88,10 @@ SiteGenerator.prototype.stylesheet = function stylesheet() {
   this.directory('hologramStuff', 'tools_grunt/hologramStuff');
 };
 
+SiteGenerator.prototype.script = function script() {
+  this.copy('run.js', 'htdocs/common/js/run.js');
+};
+
 SiteGenerator.prototype.htmlTmpl = function htmlTmpl() {
   this.directory('include', 'htdocs/include');
   this.copy('index.html', 'htdocs/index.html');
@@ -96,7 +100,6 @@ SiteGenerator.prototype.htmlTmpl = function htmlTmpl() {
 SiteGenerator.prototype.app = function app() {
   this.mkdir('htdocs');
   this.mkdir('htdocs/common');
-  this.mkdir('htdocs/common/js');
   this.mkdir('htdocs/common/js/components');
   this.mkdir('htdocs/common/css');
   this.mkdir('htdocs/common/css/extra');
