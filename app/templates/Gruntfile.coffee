@@ -8,14 +8,35 @@ module.exports = (grunt) ->
   grunt.initConfig
     pkg: grunt.file.readJSON 'package.json'
 
+    prettify:
+      options:
+        config: '.prettifyrc'
+      all:
+        expand: true,
+        cwd: '../htdocs',
+        ext: '.html',
+        src: ['**/*.html'],
+        dest: '../dist'
+
     exec:
       hologram_pc:
         cmd: '(cd hologramStuff; bundle exec hologram config.yml; cd ../)'
       hologram_sp:
         cmd: '(cd hologramStuff; bundle exec hologram config_sp.yml; cd ../)'
 
-    # Settings for Hologram
     replace:
+      htmlindent:
+        src: [
+          '../dist/*.html'
+          '../dist/**/*.html'
+        ]
+        overwrite: true,
+        replacements: [
+          {
+            from: /<\/div>\n\s+<!--\s\/(#|\.)/g
+            to: '</div><!-- /$1'
+          },
+        ]
       styleguide_css_pc:
         src: ['../docs/styleguide/common/css/*.css']
         dest: '../docs/styleguide/common/css/'
@@ -89,4 +110,10 @@ module.exports = (grunt) ->
     'replace:styleguide_css_sp'
     'replace:styleguide_html_sp'
   ]
+
+  grunt.registerTask 'htmlpretty', [
+    'prettify:all'
+    'replace:htmlindent'
+  ]
+
   return;

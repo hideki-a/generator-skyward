@@ -95,6 +95,7 @@ SiteGenerator.prototype.script = function script() {
 SiteGenerator.prototype.htmlTmpl = function htmlTmpl() {
   this.directory('include', 'htdocs/include');
   this.copy('index.html', 'htdocs/index.html');
+  this.copy('prettifyrc', 'tools_grunt/.prettifyrc');
 };
 
 SiteGenerator.prototype.app = function app() {
