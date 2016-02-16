@@ -101,7 +101,7 @@ $clearfix-defined: false !default;
 
 	display: table;
 	width: 100%;
-	@include screen and (max-width: $bp) {
+	@media screen and (max-width: $bp) {
 		display: block;
 		overflow-x: auto;
 		margin: 0 0 1em;
@@ -121,7 +121,7 @@ $clearfix-defined: false !default;
 
 // # オブジェクトの埋め込み（マルチスクリーン対応）
 // レスポンシブWebデザインのページにGoogle Mapsなどを埋め込む際に利用
-// 
+//
 // ## 引数:
 // なし
 @mixin embed-responsive-object{
