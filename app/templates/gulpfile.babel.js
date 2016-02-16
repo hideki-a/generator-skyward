@@ -137,6 +137,19 @@ gulp.task('serve:dist', () => {
   });
 });
 
+// Generate Sitemap
+gulp.task('sitemap', () =>
+  gulp.src([
+      '../htdocs/**/*.html',
+      '!../htdocs/**/include/*.html',
+      '!../htdocs/**/_scss/**/*.html'
+    ])
+    .pipe($.sitemap({
+      siteUrl: 'http://192.168.24.7:3501'
+    }))
+    .pipe(gulp.dest('../test'))
+);
+
 // Default task
 gulp.task('default', ['clean:tmp'], cb =>
   runSequence(
