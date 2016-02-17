@@ -50,6 +50,10 @@ module.exports = (grunt) ->
             to: '(../../$1'
           },
           {
+          {
+            from: /html(\s*?){/g
+            to: ':host$1{'
+          },
             from: /body(\s*?){/g
             to: ':host$1{'
           },
@@ -78,6 +82,10 @@ module.exports = (grunt) ->
           {
             from: /\(\/english\/sp\/(images|_dev)/g
             to: '(../../$1'
+          },
+          {
+            from: /html(\s*?){/g
+            to: ':host$1{'
           },
           {
             from: /body(\s*?){/g
