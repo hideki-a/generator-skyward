@@ -19,7 +19,7 @@ For more information on what `generator-skyward` can do for you, take a look at 
 - Install: `npm install -g generator-skyward`
 - Run: `yo skyward`
 - `cd tools`
-- Run: `npm start`(or `grunt`) for building
+- Run: `npm start`(or `gulp`) for building
 
 ## Options
 
