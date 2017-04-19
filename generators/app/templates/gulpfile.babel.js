@@ -54,7 +54,7 @@ gulp.task('styles', () => {
     .pipe($.sourcemaps.init())
     .pipe($.sass({
       precision: 3,
-      includePaths: require('node-neat').includePaths
+      includePaths: require('bourbon-neat').includePaths
     }).on('error', $.notify.onError((error) => {
       return error.message;
     })))
