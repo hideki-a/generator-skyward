@@ -89,6 +89,37 @@ gulp.task('eslint', () =>
     }))
 );
 
+// Concatenate and minify JavaScript. Optionally transpiles ES2015 code to ES5.
+gulp.task('scripts:common', () =>
+    gulp.src([
+      // Note: Since we are not using useref in the scripts build pipeline,
+      //       you need to explicitly list your scripts here in the right order
+      //       to be correctly concatenated
+      '../htdocs/common/js/components/ajl.custom.min.js',
+    ])
+      // .pipe($.newer('.tmp/js'))
+      // .pipe($.sourcemaps.init())
+      // .pipe($.babel({
+      //   babelrc: false,
+      //   presets: [[
+      //     'babel-preset-es2015',
+      //   ].map(require.resolve)],
+      //   plugins: [[
+      //   ].map(require.resolve)]
+      // }))
+      .pipe($.sourcemaps.write())
+      // .pipe(gulp.dest('.tmp/js'))
+      .pipe($.concatUtil('common.js', { process: function (src) {
+        return (src.trim() + '\n').replace(/(^|\n)[ \t]*('use strict'|"use strict");?\s*/g, '$1');
+      }}))
+      .pipe($.concatUtil.header('\'use strict\';\n'))
+      // .pipe($.uglify({preserveComments: 'some'}))
+      // Output files
+      .pipe($.size({title: 'scripts'}))
+      // .pipe($.sourcemaps.write('.'))
+      .pipe(gulp.dest('../htdocs/common/js'))
+);
+
 // Make sitemap.xml
 gulp.task('sitemap', () =>
   gulp.src('../dist/**/*.html')
