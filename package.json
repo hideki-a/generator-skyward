@@ -1,41 +1,56 @@
 {
   "name": "generator-skyward",
-  "version": "3.0.0",
+  "version": "5.0.0",
   "description": "Yeoman generator for scaffolding out a website",
+  "homepage": "https://github.com/hideki-a/generator-skyward",
+  "bugs": "https://github.com/hideki-a/generator-skyward/issues",
+  "author": {
+    "name": "Hideki Abe",
+    "email": "hideki.abe@anothersky.pw",
+    "url": "https://www.anothersky.pw/"
+  },
+  "files": [
+    "generators"
+  ],
+  "main": "generators/index.js",
   "keywords": [
     "yeoman-generator",
     "website",
     "front-end"
   ],
-  "homepage": "https://github.com/hideki-a/generator-skyward",
-  "bugs": "https://github.com/hideki-a/generator-skyward/issues",
-  "author": {
-    "name": "Hideki Abe"
-  },
-  "main": "app/index.js",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/hideki-a/generator-skyward.git"
-  },
-  "scripts": {
-    "test": "mocha --reporter spec"
-  },
   "dependencies": {
-    "yeoman-generator": "~0.17.1"
+    "chalk": "^1.1.3",
+    "html-wiring": "^1.2.0",
+    "mkdirp": "^0.5.1",
+    "path": "^0.12.7",
+    "underscore.string": "^3.3.4",
+    "yeoman-generator": "^1.0.0",
+    "yosay": "^2.0.0"
   },
-  "peerDependencies": {},
   "devDependencies": {
-    "mocha": "~1.20.1"
+    "yeoman-test": "^1.6.0",
+    "yeoman-assert": "^3.0.0",
+    "eslint": "^3.1.1",
+    "eslint-config-xo-space": "^0.15.0",
+    "gulp": "^3.9.0",
+    "gulp-eslint": "^3.0.1",
+    "gulp-exclude-gitignore": "^1.0.0",
+    "gulp-line-ending-corrector": "^1.0.1",
+    "gulp-istanbul": "^1.0.0",
+    "gulp-mocha": "^3.0.1",
+    "gulp-plumber": "^1.0.0",
+    "gulp-nsp": "^2.1.0"
   },
-  "engines": {
-    "node": ">=0.10.0"
-  },
-  "licenses": [
-    {
-      "type": "MIT"
+  "eslintConfig": {
+    "extends": "xo-space",
+    "env": {
+      "mocha": true
     }
-  ],
-  "readmeFilename": "README.md",
-  "_id": "generator-skyward@3.0.0",
-  "_from": "generator-skyward@"
+  },
+  "repository": "hideki-a/generator-skyward",
+  "scripts": {
+    "prepublish": "gulp prepublish",
+    "test": "gulp"
+  },
+  "license": "MIT"
 }

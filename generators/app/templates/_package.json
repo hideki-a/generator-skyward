@@ -1,5 +1,5 @@
 {
-  "name": "<%= _.slugify(appname) %>",
+  "name": "<%= appname %>",
   "version": "1.0.0",
   "scripts": {
     "start": "gulp",
