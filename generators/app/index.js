@@ -129,12 +129,21 @@ module.exports = class extends Generator {
   }
 
   install() {
+    var self = this;
     process.chdir('tools');
     this.installDependencies({
       yarn: true,
       npm: false,
       bower: true,
       skipInstall: this.options["skip-install"],
+      callback: function () {
+        if (!self.options["skip-install"]) {
+          self.fs.copy(
+            'node_modules/normalize.css/normalize.css',
+            '../htdocs/_scss/_normalize.scss'
+          );
+        }
+      }
     });
   }
 };
