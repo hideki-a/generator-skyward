@@ -55,7 +55,7 @@
 // ## 引数:
 // なし
 @mixin margin-utility {
-	.mod-mb-non{
+	.mb-non{
 		margin-bottom: 0 !important;
 	}
 }
@@ -123,9 +123,8 @@ $clearfix-defined: false !default;
 //
 // ## 引数:
 // なし
-@mixin focus {
+@mixin pointer-enter {
 	&:hover,
-	&:active,
 	&:focus{
 		@content;
 	}
