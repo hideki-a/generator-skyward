@@ -38,7 +38,7 @@ const reload = browserSync.reload;
 gulp.task('styles', () => {
   const AUTOPREFIXER_BROWSERS = [
     'last 2 versions',
-    'ie >= 9',
+    'ie 11',
   ];
   const PROCESSORS = [
     autoprefixer({ browsers: AUTOPREFIXER_BROWSERS }),
