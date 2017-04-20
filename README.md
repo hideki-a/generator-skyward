@@ -1,36 +1,32 @@
-# generator-skyward-dev [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
-> 
+generator-skyward
+=================
 
-## Installation
+Yeoman generator for scaffolding out a website.
 
-First, install [Yeoman](http://yeoman.io) and generator-skyward-dev using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
+## Features
 
-```bash
-npm install -g yo
-npm install -g generator-skyward-dev
-```
+* Built-in preview server
+* Automagically compile Sass(with Libsass)
+* Lint your scripts
+* Automagically wire up your Bower components.
+* Awesome Image Optimization
+* Generate Styleguide
 
-Then generate your new project:
+For more information on what `generator-skyward` can do for you, take a look at the [Grunt tasks](https://github.com/hideki-a/generator-skyward/blob/master/app/templates/Gruntfile.coffee) used in our `Gruntfile.coffee`.
 
-```bash
-yo skyward-dev
-```
+## Getting Started
 
-## Getting To Know Yeoman
+- Install: `npm install -g generator-skyward`
+- Run: `yo skyward`
+- `cd tools`
+- Run: `npm start`(or `gulp`) for building
 
- * Yeoman has a heart of gold.
- * Yeoman is a person with feelings and opinions, but is very easy to work with.
- * Yeoman can be too opinionated at times but is easily convinced not to be.
- * Feel free to [learn more about Yeoman](http://yeoman.io/).
+## Options
+
+* `--skip-install`
+
+  Skips the automatic execution of `bower` and `npm` after scaffolding has finished.
 
 ## License
 
-MIT © [Hideki Abe]()
-
-
-[npm-image]: https://badge.fury.io/js/generator-skyward-dev.svg
-[npm-url]: https://npmjs.org/package/generator-skyward-dev
-[travis-image]: https://travis-ci.org/hideki-a/generator-skyward-dev.svg?branch=master
-[travis-url]: https://travis-ci.org/hideki-a/generator-skyward-dev
-[daviddm-image]: https://david-dm.org/hideki-a/generator-skyward-dev.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/hideki-a/generator-skyward-dev
+[MIT License](http://en.wikipedia.org/wiki/MIT_License)
