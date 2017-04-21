@@ -12,7 +12,7 @@ Yeoman generator for scaffolding out a website.
 * Awesome Image Optimization
 * Generate Styleguide
 
-For more information on what `generator-skyward` can do for you, take a look at the [Grunt tasks](https://github.com/hideki-a/generator-skyward/blob/master/app/templates/Gruntfile.coffee) used in our `Gruntfile.coffee`.
+For more information on what `generator-skyward` can do for you, take a look at the [gulp tasks](https://github.com/hideki-a/generator-skyward/blob/master/app/templates/gulpfile.babel.js) used in my `gulpfile.babel.js`.
 
 ## Getting Started
 
@@ -25,7 +25,7 @@ For more information on what `generator-skyward` can do for you, take a look at 
 
 * `--skip-install`
 
-  Skips the automatic execution of `bower` and `npm` after scaffolding has finished.
+  Skips the automatic execution of `yarn` and `bower` after scaffolding has finished.
 
 ## License
 
