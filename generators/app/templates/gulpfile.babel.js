@@ -36,12 +36,8 @@ const reload = browserSync.reload;
 
 // Compile and automatically prefix stylesheets
 gulp.task('styles', () => {
-  const AUTOPREFIXER_BROWSERS = [
-    'last 2 versions',
-    'ie 11',
-  ];
   const PROCESSORS = [
-    autoprefixer({ browsers: AUTOPREFIXER_BROWSERS }),
+    autoprefixer(),
     mqpacker(),
     perfectionist()
   ];
