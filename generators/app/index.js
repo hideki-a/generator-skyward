@@ -86,8 +86,8 @@ module.exports = class extends Generator {
       this.destinationPath('tools/.eslintrc')
     );
     this.fs.copy(
-      this.templatePath('csslintrc'),
-      this.destinationPath('tools/.csslintrc')
+      this.templatePath('stylelintrc'),
+      this.destinationPath('tools/.stylelintrc')
     );
     this.fs.copy(
       this.templatePath('run.js'),

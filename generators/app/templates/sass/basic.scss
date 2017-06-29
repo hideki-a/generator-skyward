@@ -7,7 +7,9 @@
 // @import "neat_bp_setting";
 
 // @include reset-common;
+/* stylelint-disable */
 @import "normalize";
+/* stylelint-enable */
 
 @import "base";
 @import "layout";

@@ -29,19 +29,13 @@ import browserSyncSSI from 'browsersync-ssi';
 import gulpLoadPlugins from 'gulp-load-plugins';
 import autoprefixer from 'autoprefixer';
 import mqpacker from 'css-mqpacker';
-import perfectionist from 'perfectionist';
+import stylefmt from 'stylefmt';
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 
 // Compile and automatically prefix stylesheets
 gulp.task('styles', () => {
-  const PROCESSORS = [
-    autoprefixer(),
-    mqpacker(),
-    perfectionist()
-  ];
-
   // For best performance, don't add Sass partials to `gulp.src`
   return gulp.src([
     '../htdocs/_scss/*.scss'
@@ -54,7 +48,21 @@ gulp.task('styles', () => {
     }).on('error', $.notify.onError((error) => {
       return error.message;
     })))
-    .pipe($.postcss(PROCESSORS))
+    .pipe($.postcss([
+      autoprefixer(),
+      mqpacker({ sort: true })
+    ]))
+    .pipe($.postcss([stylefmt()]))
+    .pipe($.stylelint({
+      reporters: [
+        {
+          formatter: 'string',
+          console: true
+        }
+      ]
+    }).on('error', $.notify.onError(() => {
+      return 'Stylelint Error!!';
+    })))
     .pipe(gulp.dest('.tmp/common/css'))
     .pipe($.size({ title: 'styles' }))
     .pipe($.sourcemaps.write('./'))

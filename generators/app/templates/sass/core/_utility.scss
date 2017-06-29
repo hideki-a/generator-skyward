@@ -85,8 +85,7 @@ $clearfix-defined: false !default;
 	@if not $clearfix-defined {
 		$clearfix-defined: true;
 		%clearfix{
-			/* フロートの解除 */    // @charset出力のため、あえてコメントを日本語化している
-			&:after {
+			&::after {
 				clear: both;
 				display: block;
 				content: "";
