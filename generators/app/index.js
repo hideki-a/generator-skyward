@@ -35,6 +35,7 @@ module.exports = class extends Generator {
     mkdirp.sync('materials');
     mkdirp.sync('backup');
     mkdirp.sync('documents');
+    mkdirp.sync('src/js');
     mkdirp.sync('test');
     mkdirp.sync('htdocs/_scss');
     mkdirp.sync('htdocs/common/js/components');
@@ -91,7 +92,7 @@ module.exports = class extends Generator {
     );
     this.fs.copy(
       this.templatePath('run.js'),
-      this.destinationPath('htdocs/common/js/run.js')
+      this.destinationPath('src/common/js/run.js')
     );
     this.fs.copy(
       this.templatePath('index.html'),
