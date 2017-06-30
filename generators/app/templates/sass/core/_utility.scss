@@ -55,7 +55,7 @@
 // ## 引数:
 // なし
 @mixin margin-utility {
-	.mb-non{
+	.mb-non {
 		margin-bottom: 0 !important;
 	}
 }
@@ -107,14 +107,20 @@ $clearfix-defined: false !default;
 	}
 }
 
-@mixin mq-min($width) {
-	@if unitless($width) {
-		$width: $width + px;
-	}
+@mixin mq-min($width, $print: false) {
+  @if unitless($width) {
+    $width: $width + px;
+  }
 
-	@media only screen and (min-width: $width) {
-		@content;
-	}
+  @if $print {
+    @media only screen and (min-width: $width), print {
+      @content;
+    }
+  } @else {
+    @media only screen and (min-width: $width) {
+      @content;
+    }
+  }
 }
 
 
@@ -134,7 +140,7 @@ $clearfix-defined: false !default;
 //
 // ## 引数:
 // * `bp`: ブレークポイント
-@mixin tbl-scroll($bp:767){
+@mixin tbl-scroll($bp: 767) {
 	@if unitless($bp) {
 		$bp: $bp + px;
 	}
@@ -164,12 +170,12 @@ $clearfix-defined: false !default;
 //
 // ## 引数:
 // なし
-@mixin embed-responsive-object{
+@mixin embed-responsive-object {
 	position: relative;
 	overflow: hidden;
 	padding-bottom: 56%;
 	height: 0;
-	iframe{
+	iframe {
 		position: absolute;
 		top: 0;
 		left: 0;
