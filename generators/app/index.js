@@ -36,15 +36,15 @@ module.exports = class extends Generator {
     mkdirp.sync('backup');
     mkdirp.sync('documents');
     mkdirp.sync('src/js');
+    mkdirp.sync('src/scss');
     mkdirp.sync('test');
-    mkdirp.sync('htdocs/_scss');
     mkdirp.sync('htdocs/common/js/components');
     mkdirp.sync('htdocs/common/css/extra');
     mkdirp.sync('htdocs/common/images');
 
     this.fs.copy(
       this.templatePath('sass'),
-      this.destinationPath('htdocs/_scss')
+      this.destinationPath('src/scss')
     );
     this.fs.copy(
       this.templatePath('include'),
@@ -145,7 +145,7 @@ module.exports = class extends Generator {
         if (!self.options["skip-install"]) {
           self.fs.copy(
             'node_modules/normalize.css/normalize.css',
-            '../htdocs/_scss/_normalize.scss'
+            '../src/scss/_normalize.scss'
           );
         }
       }

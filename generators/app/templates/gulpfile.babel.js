@@ -38,7 +38,7 @@ const reload = browserSync.reload;
 gulp.task('styles', () => {
   // For best performance, don't add Sass partials to `gulp.src`
   return gulp.src([
-    '../htdocs/_scss/*.scss'
+    '../src/scss/**/*.scss'
   ])
     .pipe($.newer('.tmp/common/css'))
     .pipe($.sourcemaps.init())
@@ -158,7 +158,7 @@ gulp.task('serve', () => {
   });
 
   gulp.watch(['../htdocs/**/*.html'], reload);
-  gulp.watch(['../htdocs/_scss/*.scss'], ['styles', reload]);
+  gulp.watch(['../src/scss/**/*.scss'], ['styles', reload]);
   gulp.watch(['../src/js/**/*.js'], ['scripts:default', reload]);
 });
 
