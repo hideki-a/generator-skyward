@@ -35,10 +35,9 @@ module.exports = class extends Generator {
     mkdirp.sync('materials');
     mkdirp.sync('backup');
     mkdirp.sync('documents');
-    mkdirp.sync('src/js');
+    mkdirp.sync('src/js/common/js');
     mkdirp.sync('src/scss');
     mkdirp.sync('test');
-    mkdirp.sync('htdocs/common/js/components');
     mkdirp.sync('htdocs/common/css/extra');
     mkdirp.sync('htdocs/common/images');
 
