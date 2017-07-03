@@ -31,7 +31,6 @@ module.exports = class extends Generator {
 
   writing() {
     mkdirp.sync('tools');
-    mkdirp.sync('tools_grunt');
     mkdirp.sync('materials');
     mkdirp.sync('backup');
     mkdirp.sync('documents');
@@ -48,14 +47,6 @@ module.exports = class extends Generator {
     this.fs.copy(
       this.templatePath('include'),
       this.destinationPath('htdocs/include')
-    );
-    this.fs.copy(
-      this.templatePath('hologramStuff'),
-      this.destinationPath('tools_grunt/hologramStuff')
-    );
-    this.fs.copy(
-      this.templatePath('Gruntfile.coffee'),
-      this.destinationPath('tools_grunt/Gruntfile.coffee')
     );
     this.fs.copy(
       this.templatePath('gulpfile.babel.js'),
@@ -97,19 +88,10 @@ module.exports = class extends Generator {
       this.templatePath('index.html'),
       this.destinationPath('htdocs/index.html')
     );
-    this.fs.copy(
-      this.templatePath('prettifyrc'),
-      this.destinationPath('tools_grunt/.prettifyrc')
-    );
 
     this.fs.copyTpl(
       this.templatePath('_package.json'),
       this.destinationPath('tools/package.json'),
-      { appname: _.slugify(this.appname) }
-    );
-    this.fs.copyTpl(
-      this.templatePath('_package_grunt.json'),
-      this.destinationPath('tools_grunt/package.json'),
       { appname: _.slugify(this.appname) }
     );
     this.fs.copyTpl(

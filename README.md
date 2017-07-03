@@ -10,7 +10,6 @@ Yeoman generator for scaffolding out a website.
 * Lint your scripts
 * Automagically wire up your Bower components.
 * Awesome Image Optimization
-* Generate Styleguide
 
 For more information on what `generator-skyward` can do for you, take a look at the [gulp tasks](https://github.com/hideki-a/generator-skyward/blob/master/app/templates/gulpfile.babel.js) used in my `gulpfile.babel.js`.
 

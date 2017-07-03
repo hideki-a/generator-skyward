@@ -1,2 +1,0 @@
-source "http://rubygems.org"
-gem "hologram", :git => 'https://github.com/hideki-a/hologram.git', :branch => 'scss-patch-2'
