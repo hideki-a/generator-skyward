@@ -43,8 +43,7 @@ gulp.task('styles', () => {
     .pipe($.newer('.tmp/common/css'))
     .pipe($.sourcemaps.init())
     .pipe($.sass({
-      precision: 3,
-      includePaths: require('bourbon-neat').includePaths
+      precision: 3
     }).on('error', $.notify.onError((error) => {
       return error.message;
     })))
