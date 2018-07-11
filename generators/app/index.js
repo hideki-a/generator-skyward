@@ -34,7 +34,7 @@ module.exports = class extends Generator {
     mkdirp.sync('materials');
     mkdirp.sync('backup');
     mkdirp.sync('documents');
-    mkdirp.sync('src/js/common/js');
+    mkdirp.sync('src/js');
     mkdirp.sync('src/scss');
     mkdirp.sync('test');
     mkdirp.sync('htdocs/common/css/extra');
@@ -65,7 +65,7 @@ module.exports = class extends Generator {
       this.destinationPath('.editorconfig')
     );
     this.fs.copy(
-      this.templatePath('browserslist'),
+      this.templatePath('browserslistrc'),
       this.destinationPath('.browserslistrc')
     );
     this.fs.copy(
@@ -82,7 +82,7 @@ module.exports = class extends Generator {
     );
     this.fs.copy(
       this.templatePath('run.js'),
-      this.destinationPath('src/common/js/run.js')
+      this.destinationPath('htdocs/common/js/run.js')
     );
     this.fs.copy(
       this.templatePath('index.html'),
@@ -120,16 +120,13 @@ module.exports = class extends Generator {
     this.installDependencies({
       yarn: true,
       npm: false,
-      bower: true,
-      skipInstall: this.options["skip-install"],
-      callback: function () {
-        if (!self.options["skip-install"]) {
-          self.fs.copy(
-            'node_modules/normalize.css/normalize.css',
-            '../src/scss/_normalize.scss'
-          );
-        }
-      }
+      bower: true
+    });
+    this.on('end', function() {
+      self.fs.copy(
+        'node_modules/normalize.css/normalize.css',
+        '../src/scss/_normalize.scss'
+      );
     });
   }
 };
