@@ -79,12 +79,19 @@ gulp.task('images', () =>
     .pipe(gulp.dest('../dist'))
 );
 
-// Lint JavaScript. Optionally transpiles ES2015 code to ES5.
-gulp.task('scripts:default', () =>
+// Lint JavaScript, transpiles ES2015 code to ES5, concatenate and minify JavaScript.
+gulp.task('scripts', () =>
     gulp.src([
-      '../src/js/**/*.js'
+      // Note: Since we are not using useref in the scripts build pipeline,
+      //       you need to explicitly list your scripts here in the right order
+      //       to be correctly concatenated
+      '../src/js/autotrack.js',
+      '../src/js/temp.js',
     ])
-      .pipe($.newer('.tmp/js'))
+      .pipe($.concatUtil('main.js', { process: function (src) {
+        return (src.trim() + '\n').replace(/(^|\n)[ \t]*('use strict'|"use strict");?\s*/g, '$1');
+      }}))
+      .pipe($.concatUtil.header('\'use strict\';\n'))
       .pipe($.plumber({
           errorHandler: $.notify.onError('Error: <%= error.message %>')
       }))
@@ -92,33 +99,16 @@ gulp.task('scripts:default', () =>
       .pipe($.eslint.format())
       .pipe($.eslint.failAfterError())
       .pipe($.babel({
-        babelrc: false,
-        presets: [[
-          'babel-preset-es2015',
-        ].map(require.resolve)],
-        // plugins: [[
-        // ].map(require.resolve)]
+        'presets': [
+          ['@babel/env']],
+        'babelrc': false
       }))
-      .pipe(gulp.dest('.tmp/js'))
-      .pipe($.size({title: 'scripts'}))
-      .pipe(gulp.dest('../htdocs/'))
-);
-
-// Concatenate and minify JavaScript.
-gulp.task('scripts:concat', () =>
-    gulp.src([
-      // Note: Since we are not using useref in the scripts build pipeline,
-      //       you need to explicitly list your scripts here in the right order
-      //       to be correctly concatenated
-      '../htdocs/common/js/components/ajl.custom.min.js',
-    ])
-      .pipe($.concatUtil('common.js', { process: function (src) {
-        return (src.trim() + '\n').replace(/(^|\n)[ \t]*('use strict'|"use strict");?\s*/g, '$1');
-      }}))
-      .pipe($.concatUtil.header('\'use strict\';\n'))
-      // .pipe($.uglify({preserveComments: 'some'}))
-      .pipe($.size({title: 'scripts'}))
-      .pipe(gulp.dest('../htdocs/common/js'))
+      .pipe($.size({title: 'main.js'}))
+      .pipe(gulp.dest('../htdocs/common/js/'))
+      .pipe($.uglify({output: {comments: 'some'}}))
+      .pipe($.rename('main.min.js'))
+      .pipe($.size({title: 'main.min.js'}))
+      .pipe(gulp.dest('../htdocs/common/js/'))
 );
 
 // Make sitemap.xml
@@ -159,7 +149,7 @@ gulp.task('serve', () => {
 
   gulp.watch(['../htdocs/**/*.html'], reload);
   gulp.watch(['../src/scss/**/*.scss'], ['styles', reload]);
-  gulp.watch(['../src/js/**/*.js'], ['scripts:default', reload]);
+  gulp.watch(['../src/js/**/*.js'], ['scripts', reload]);
 });
 
 gulp.task('serve:dist', () => {
@@ -185,7 +175,7 @@ gulp.task('sitemap', () =>
 // Default task
 gulp.task('default', ['clean:tmp'], cb =>
   runSequence(
-    ['styles', 'scripts:default'],
+    ['styles', 'scripts'],
     'serve',
     cb
   )
@@ -194,7 +184,7 @@ gulp.task('default', ['clean:tmp'], cb =>
 // Publish production files
 gulp.task('publish', ['clean:dist'], cb =>
   runSequence(
-    ['styles', 'scripts:default'],
+    ['styles', 'scripts'],
     'copy',
     'images',
     cb

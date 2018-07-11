@@ -66,7 +66,7 @@ module.exports = class extends Generator {
     );
     this.fs.copy(
       this.templatePath('browserslist'),
-      this.destinationPath('browserslist')
+      this.destinationPath('.browserslistrc')
     );
     this.fs.copy(
       this.templatePath('bowerrc'),
