@@ -18,5 +18,5 @@ module.exports = {
     watch: true,
     ghostMode: false,
     browser: 'google chrome',
-    startPath: '/static/',
+    startPath: '<%= startPath %>',
 };

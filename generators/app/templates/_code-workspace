@@ -5,6 +5,6 @@
 		}
 	],
 	"settings": {
-		"phpcs.standard": "WordPress-Extra"
+		"phpcs.standard": "<%= phpcs %>"
 	}
 }

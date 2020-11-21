@@ -28,7 +28,7 @@ module.exports = {
     ]
   },
   output: {
-    path: path.resolve(__dirname, '../htdocs/wp/wp-content/themes/<%= themename %>/js'),
+    path: path.resolve(__dirname, '../htdocs<%= jsDir %>'),
     filename: '[name].js'
   }
 };

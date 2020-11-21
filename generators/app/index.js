@@ -26,7 +26,7 @@ module.exports = class extends Generator {
       {
         type: 'input',
         name: 'themename',
-        message: 'Your WordPress theme name',
+        message: 'Your WordPress theme name. (Enter `n` if you are not using WordPress.)',
         default: _.slugify(this.appname)
       }
     ];
@@ -65,39 +65,51 @@ module.exports = class extends Generator {
       this.templatePath('browserslistrc'),
       this.destinationPath('.browserslistrc')
     );
-    this.fs.copy(
-      this.templatePath('phpcs.xml'),
-      this.destinationPath('phpcs.xml')
-    );
+
+    if (this.themename !== 'n') {
+      this.fs.copy(
+        this.templatePath('phpcs.xml'),
+        this.destinationPath('phpcs.xml')
+      );
+    }
 
     this.fs.copyTpl(
       this.templatePath('_package.json'),
       this.destinationPath('package.json'),
       {
-        appPath: this.contextRoot,
         appname: _.slugify(this.appname),
-        themename: this.themename
+        htmlDir: this.themename === 'n' ? '/' : '/static/',
+        cssDir: this.themename === 'n' ? '/common/css/' : '/wp/wp-content/themes/' + this.themename + '/'
       }
     );
     this.fs.copyTpl(
       this.templatePath('settings_tmpl/_variable.pug'),
       this.destinationPath('src/pug/_partial/_variable.pug'),
       {
-        themename: this.themename
+        cssDir: this.themename === 'n' ? '/common/css/' : '/wp/wp-content/themes/' + this.themename + '/',
+        jsDir: this.themename === 'n' ? '/common/js/' : '/wp/wp-content/themes/' + this.themename + '/js/',
+        imageDir: this.themename === 'n' ? '' : '/wp/wp-content/themes/' + this.themename + '/images/'
       }
     );
     this.fs.copyTpl(
       this.templatePath('settings_tmpl/_setting.scss'),
       this.destinationPath('src/scss/_setting.scss'),
       {
-        themename: this.themename
+        imageDir: this.themename === 'n' ? '' : '/wp/wp-content/themes/' + this.themename + '/images/'
+      }
+    );
+    this.fs.copyTpl(
+      this.templatePath('settings_tmpl/bs-config.js'),
+      this.destinationPath('conf/bs-config.js'),
+      {
+        startPath: this.themename === 'n' ? '/' : '/static/'
       }
     );
     this.fs.copyTpl(
       this.templatePath('settings_tmpl/webpack.config.js'),
       this.destinationPath('conf/webpack.config.js'),
       {
-        themename: this.themename
+        jsDir: this.themename === 'n' ? '/common/js' : '/wp/wp-content/themes/' + this.themename + '/js'
       }
     );
     this.fs.copyTpl(
@@ -110,7 +122,9 @@ module.exports = class extends Generator {
       this.fs.copyTpl(
         this.templatePath('_code-workspace'),
         this.destinationPath(_.slugify(this.appname) + '.code-workspace'),
-        { appPath: this.contextRoot }
+        {
+          phpcs: this.themename === 'n' ? 'PSR12' : 'WordPress-Extra'
+        }
       );
     }
   }
