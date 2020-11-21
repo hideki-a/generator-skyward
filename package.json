@@ -48,9 +48,6 @@
     }
   },
   "repository": "hideki-a/generator-skyward",
-  "scripts": {
-    "prepublish": "gulp prepublish",
-    "test": "gulp"
-  },
+  "scripts": {},
   "license": "MIT"
 }
