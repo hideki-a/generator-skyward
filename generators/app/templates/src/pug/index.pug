@@ -1,0 +1,27 @@
+include /_partial/_variable
+append variables
+  - var isHomePage = true
+  - var titleAddText = " | 追加タイトルテキスト"
+
+doctype html
+html(lang="ja")
+  head
+    include /_partial/_meta
+
+  body.home
+    include /_partial/_header
+
+    main
+      .keyVisual
+        .keyVisual__item
+          //- img(src=imageDir + "pic_index_01.jpg" width="1280" height="470" alt="写真：")
+      // /.keyVisual
+
+      .layout
+        .layout__inner
+          p Initialize done.
+        // /.layout__inner
+      // /.layout
+
+    include /_partial/_footer
+    include /_partial/_foot_script

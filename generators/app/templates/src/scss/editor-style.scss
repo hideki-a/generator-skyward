@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+@use "setting";
+@use "mixins";
+@use "core/utility";
+
+.article__body {
+	@include mixins.editor-style;
+}

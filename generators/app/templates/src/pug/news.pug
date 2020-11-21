@@ -1,0 +1,46 @@
+extend /_template/_default
+include /_partial/_variable
+append variables
+  - var pageTitle = 'お知らせ'
+  - var pageDescription = siteDescription
+  - var isHomePage = false
+  - var gnavCurrent1 = "true"
+
+block content
+  main
+    h1.headingLv1
+      span お知らせ
+
+    .layout
+      .layout__inner
+        include /_partial/_breadcrumb
+      // /.layout__inner
+    // /.layout
+
+    .layout.-navigationLocal
+      .layout__inner
+        .layout__contentColumn
+          ul.entryList
+            li.entryList__item
+              a.entryList__anchor(href="/static/news_detail.html")
+                .entryList__heading
+                  time.entryList__date(datetime="2020-11-01") 2020年11月01日
+                  b.entryList__title インフルエンザの予防接種を行なっています。
+                .entryList__image
+                  img(src=imageDir + "pic_news_01.png" srcset=imageDir + "pic_news_01.png, " + imageDir + "pic_news_01@2x.png" alt="" width="196" height="131" loading="lazy")
+
+          .pagination
+            .pagination__link.-prev: a(href="#" aria-label="前のページへ") ≪
+            ol.pagination__sequence
+              li: a(href="#"): span 1
+              li: em(aria-current="true"): span 2
+              li: a(href="#"): span 3
+            .pagination__link.-next: a(href="#" aria-label="次のページへ") ≫
+          // /.pagination
+        // /.layout__contentColumn
+
+        .layout__scanColumn
+          //- Archive Links, etc
+        // /.layout__scanColumn
+      // /.layout__inner
+    // /.layout

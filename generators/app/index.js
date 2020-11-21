@@ -16,45 +16,42 @@ module.exports = class extends Generator {
       'Welcome to the astonishing ' + chalk.red('generator-skyward') + ' generator!'
     ));
 
-    const prompts = [{
-      type: 'confirm',
-      name: 'sublimetext',
-      message: 'Do you use Sublime Text?',
-      default: true
-    }];
+    const prompts = [
+      {
+        type: 'confirm',
+        name: 'vscode',
+        message: 'Do you use Visual Studio Code?',
+        default: true
+      },
+      {
+        type: 'input',
+        name: 'themename',
+        message: 'Your WordPress theme name',
+        default: _.slugify(this.appname)
+      }
+    ];
 
     return this.prompt(prompts).then(props => {
       // To access props later use this.props.someAnswer;
-      this.sublimetext = props.sublimetext;
+      this.vscode = props.vscode;
+      this.themename = props.themename;
     });
   }
 
   writing() {
-    mkdirp.sync('tools');
     mkdirp.sync('materials');
     mkdirp.sync('backup');
     mkdirp.sync('documents');
-    mkdirp.sync('src/js');
-    mkdirp.sync('src/scss');
     mkdirp.sync('test');
-    mkdirp.sync('htdocs/common/css/extra');
-    mkdirp.sync('htdocs/common/images');
+    mkdirp.sync('htdocs/');
 
     this.fs.copy(
-      this.templatePath('sass'),
-      this.destinationPath('src/scss')
+      this.templatePath('src'),
+      this.destinationPath('src')
     );
     this.fs.copy(
-      this.templatePath('include'),
-      this.destinationPath('htdocs/include')
-    );
-    this.fs.copy(
-      this.templatePath('gulpfile.babel.js'),
-      this.destinationPath('tools/gulpfile.babel.js')
-    );
-    this.fs.copy(
-      this.templatePath('babelrc'),
-      this.destinationPath('tools/.babelrc')
+      this.templatePath('conf'),
+      this.destinationPath('conf')
     );
     this.fs.copy(
       this.templatePath('gitignore'),
@@ -69,63 +66,65 @@ module.exports = class extends Generator {
       this.destinationPath('.browserslistrc')
     );
     this.fs.copy(
-      this.templatePath('bowerrc'),
-      this.destinationPath('tools/.bowerrc')
-    );
-    this.fs.copy(
-      this.templatePath('eslintrc'),
-      this.destinationPath('tools/.eslintrc')
-    );
-    this.fs.copy(
-      this.templatePath('stylelintrc'),
-      this.destinationPath('tools/.stylelintrc')
-    );
-    this.fs.copy(
-      this.templatePath('run.js'),
-      this.destinationPath('htdocs/common/js/run.js')
-    );
-    this.fs.copy(
-      this.templatePath('index.html'),
-      this.destinationPath('htdocs/index.html')
+      this.templatePath('phpcs.xml'),
+      this.destinationPath('phpcs.xml')
     );
 
     this.fs.copyTpl(
       this.templatePath('_package.json'),
-      this.destinationPath('tools/package.json'),
-      { appname: _.slugify(this.appname) }
+      this.destinationPath('package.json'),
+      {
+        appPath: this.contextRoot,
+        appname: _.slugify(this.appname),
+        themename: this.themename
+      }
+    );
+    this.fs.copyTpl(
+      this.templatePath('settings_tmpl/_variable.pug'),
+      this.destinationPath('src/pug/_partial/_variable.pug'),
+      {
+        themename: this.themename
+      }
+    );
+    this.fs.copyTpl(
+      this.templatePath('settings_tmpl/_setting.scss'),
+      this.destinationPath('src/scss/_setting.scss'),
+      {
+        themename: this.themename
+      }
+    );
+    this.fs.copyTpl(
+      this.templatePath('settings_tmpl/webpack.config.js'),
+      this.destinationPath('conf/webpack.config.js'),
+      {
+        themename: this.themename
+      }
     );
     this.fs.copyTpl(
       this.templatePath('README.md'),
       this.destinationPath('README.md'),
       { appname: this.appname, pkg: this.pkg }
     );
-    this.fs.copyTpl(
-      this.templatePath('_bower.json'),
-      this.destinationPath('tools/bower.json'),
-      { appname: _.slugify(this.appname) }
-    );
 
-    if (this.sublimetext) {
+    if (this.vscode) {
       this.fs.copyTpl(
-        this.templatePath('_sublime-project'),
-        this.destinationPath(_.slugify(this.appname) + '.sublime-project'),
+        this.templatePath('_code-workspace'),
+        this.destinationPath(_.slugify(this.appname) + '.code-workspace'),
         { appPath: this.contextRoot }
       );
     }
   }
 
   install() {
-    var self = this;
-    process.chdir('tools');
     this.installDependencies({
       yarn: true,
       npm: false,
-      bower: true
+      bower: false
     });
-    this.on('end', function() {
-      self.fs.copy(
+    this.on('end', () => {
+      this.fs.copy(
         'node_modules/normalize.css/normalize.css',
-        '../src/scss/_normalize.scss'
+        'src/scss/_normalize.scss'
       );
     });
   }

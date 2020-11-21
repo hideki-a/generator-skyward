@@ -1,0 +1,22 @@
+header
+  .layout.-header
+    .layout__inner
+      if isHomePage
+        h1.siteLogo
+          a(href="/static/")
+            img(src=imageDir + "common/logo_site.svg" width="392" height="28" alt="サイト名")
+      else
+        .siteLogo
+          a(href="/static/")
+            img(src=imageDir + "common/logo_site.svg" width="392" height="28" alt="サイト名")
+        // /.siteLogo
+
+      button#toggle_gnav.toggleMenu(aria-expanded="false")
+        span.toggleMenu__middle
+          span.toggleMenu__inner
+        span.toggleMenu__text Menu
+      ul.globalNav#globalnav
+        li.globalNav__item: a(href="news.html" aria-current=gnavCurrent1) お知らせ
+        li.globalNav__item: a(href="about.html" aria-current=gnavCurrent2) 当社について
+    // /.layout__inner
+  // /.layout

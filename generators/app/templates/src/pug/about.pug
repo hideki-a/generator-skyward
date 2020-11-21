@@ -1,0 +1,18 @@
+extend /_template/_default
+include /_partial/_variable
+append variables
+  - var pageTitle = '当社について'
+  - var pageDescription = siteDescription
+  - var isHomePage = false
+  - var gnavCurrent2 = "true"
+
+block content
+  main
+    h1.headingLv1
+      span 当社について
+
+    .layout
+      .layout__inner
+        include /_partial/_breadcrumb
+      // /.layout__inner
+    // /.layout

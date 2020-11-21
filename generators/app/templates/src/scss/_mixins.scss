@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+@use "setting";
+@use "core/utility";
+
+// -----------------------------------------------------------
+// Mixins
+// -----------------------------------------------------------
+@mixin editor-style {
+	p,
+	> ul,
+	> ol,
+	dl,
+	table {
+		margin-bottom: utility.rs(28,16,"rem");
+	}
+	// ul {
+	// 	@extend .unorderdList;
+	// }
+
+	// WordPress
+	.aligncenter,
+	.alignright {
+		display: block;
+	}
+	.aligncenter {
+		margin-right: auto;
+		margin-left: auto;
+	}
+	.alignright {
+		margin-left: auto;
+	}
+}
+
+@mixin list-reset {
+	padding-left: 0;
+	list-style: none;
+}

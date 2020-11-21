@@ -5,26 +5,23 @@ Yeoman generator for scaffolding out a website.
 
 ## Features
 
-* Built-in preview server
-* Automagically compile Sass(with Libsass)
-* Lint your scripts
-* Automagically wire up your Bower components.
-* Awesome Image Optimization
-
-For more information on what `generator-skyward` can do for you, take a look at the [gulp tasks](https://github.com/hideki-a/generator-skyward/blob/master/app/templates/gulpfile.babel.js) used in my `gulpfile.babel.js`.
+* Built-in preview server with BrowserSync
+* Automagically compile Pug
+* Automagically compile Sass(with Dart Sass)
+* CSS Autoprefixing
+* Enable ES2015+ features 
 
 ## Getting Started
 
 - Install: `npm install -g generator-skyward`
 - Run: `yo skyward`
-- `cd tools`
-- Run: `npm start`(or `gulp`) for building
+- Run: `npm start` for building
 
 ## Options
 
 * `--skip-install`
 
-  Skips the automatic execution of `yarn` and `bower` after scaffolding has finished.
+  Skips the automatic execution of `yarn` after scaffolding has finished.
 
 ## License
 

@@ -1,3 +1,5 @@
+@use "../setting";
+
 // # 相対値計算
 //
 // ## 引数:
@@ -38,7 +40,7 @@
 // ## 引数:
 // * `column`: 1行のカラム数
 // * `nestlevel`: ネストレベル
-
+//
 // ## 参考:
 // http://blog.keithclark.co.uk/targeting-first-and-last-rows-in-css-grid-layouts/
 @mixin grid-lastrows-utility($column, $grid-item-tag: "li") {
@@ -50,47 +52,17 @@
 }
 
 
-// # 下方向マージンユーティリティ
-//
-// ## 引数:
-// なし
-@mixin margin-utility {
-	.mb-non {
-		margin-bottom: 0 !important;
-	}
-}
-
-
-// # MTのエディタで挿入した画像のfloat強制解除
-//
-// ## 引数:
-// なし
-@mixin mt-float-clearing {
-	.mt-image-left,
-	.mt-image-right{
-		display: block;
-		float: none !important;
-		margin: 0 0 1em !important;
-	}
-}
-
-
 // # Clearfix
 // See Also: http://cssmojo.com/the-very-latest-clearfix-reloaded/
+// IE11をサポートしないなら`display: flow-root`を使うこと。
 //
 // ## 引数:
 // なし
-$clearfix-defined: false !default;
-@mixin skyward-clearfix {
-	@if not $clearfix-defined {
-		$clearfix-defined: true;
-		%clearfix{
-			&::after {
-				clear: both;
-				display: block;
-				content: "";
-			}
-		}
+@mixin clearfix {
+	&::after {
+		clear: both;
+		display: block;
+		content: "";
 	}
 }
 
@@ -98,29 +70,34 @@ $clearfix-defined: false !default;
 // Media Query
 // Inspiration: http://robots.thoughtbot.com/sasss-content-directive
 @mixin mq($width) {
-	@if unitless($width) {
-		$width: $width + px;
-	}
+	$width-in-em-units: $width / setting.$root-font-size;
 
-	@media only screen and (max-width: $width) {
+	@media only screen and (max-width: #{$width-in-em-units}em) {
 		@content;
 	}
 }
 
 @mixin mq-min($width, $print: false) {
-  @if unitless($width) {
-    $width: $width + px;
-  }
+	$width-in-em-units: $width / setting.$root-font-size;
 
-  @if $print {
-    @media only screen and (min-width: $width), print {
-      @content;
-    }
-  } @else {
-    @media only screen and (min-width: $width) {
-      @content;
-    }
-  }
+	@if $print {
+		@media only screen and (min-width: #{$width-in-em-units}em), print {
+			@content;
+		}
+	} @else {
+		@media only screen and (min-width: #{$width-in-em-units}em) {
+			@content;
+		}
+	}
+}
+
+@mixin mq-range($min-width, $max-width) {
+	$min-width-in-em-units: $min-width / setting.$root-font-size;
+	$max-width-in-em-units: $max-width / setting.$root-font-size;
+
+	@media only screen and (min-width: #{$min-width-in-em-units}em) and (max-width: #{$max-width-in-em-units}em) {
+		@content;
+	}
 }
 
 
@@ -182,4 +159,20 @@ $clearfix-defined: false !default;
 		width: 100% !important;
 		height: 100% !important;
 	}
+}
+
+
+// # clamp()の生成
+// https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/
+@function clamp-builder($min-width-px, $max-width-px, $min-font-size, $max-font-size) {
+	$min-width: $min-width-px / setting.$root-font-size;
+	$max-width: $max-width-px / setting.$root-font-size;
+	$min-font-size-rem: $min-font-size / setting.$root-font-size;
+	$max-font-size-rem: $max-font-size / setting.$root-font-size;
+
+	$slope: ($max-font-size-rem - $min-font-size-rem) / ($max-width - $min-width);
+	$y-axis-intersection: ($min-width * -1) * $slope + $min-font-size-rem;
+	$slope-x100: $slope * 100;
+
+	@return clamp(#{$min-font-size-rem}rem, #{$y-axis-intersection}rem + " + " + #{$slope-x100}vw, #{$max-font-size-rem}rem);
 }

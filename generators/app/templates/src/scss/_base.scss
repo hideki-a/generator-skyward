@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+@use "setting";
+@use "mixins";
+@use "core/utility";
+
+/* -----------------------------------------------------------
+   Base
+----------------------------------------------------------- */
+* {
+	&,
+	&:before,
+	&:after {
+		box-sizing: border-box;
+	}
+}
+
+// a {
+// 	&:link,
+// 	&:visited {
+// 	}
+// 	&:hover,
+// 	&:active,
+// 	&:focus {
+// 	}
+// }
+
+img {
+	max-width: 100%;
+	height: auto;
+	vertical-align: bottom;
+}
+
+body {
+	line-height: utility.rs(28,16,"");
+	@include utility.font-family("hiragino");
+	color: setting.$text-color;
+}

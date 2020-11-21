@@ -1,0 +1,11 @@
+.breadcrumb
+  ol( itemscope itemtype="https://schema.org/BreadcrumbList")
+    li(itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem")
+      a(itemprop="item" href="/static/")
+        // spanとmetaは1行で
+        span(itemprop="name") Home
+        meta(itemprop="position" content="1")
+    li(itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem")
+      span(itemprop="name" aria-current="true") #{pageTitle}
+      meta(itemprop="position" content="2")
+// /.breadcrumb

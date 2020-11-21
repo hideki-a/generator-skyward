@@ -1,0 +1,79 @@
+@charset "UTF-8";
+
+@use "setting";
+@use "mixins";
+@use "core/utility";
+
+/* -----------------------------------------------------------
+   Layout
+----------------------------------------------------------- */
+
+// -----------------------------------------------------------
+// Skelton
+// -----------------------------------------------------------
+.layout {
+	position: relative;
+	.layout__inner {
+		padding-right: 10px;
+		padding-left: 10px;
+		width: 100%;
+		@include utility.mq-min(980) {
+			margin-right: auto;
+			margin-left: auto;
+			padding-right: 0;
+			padding-left: 0;
+			max-width: 960px;
+		}
+	}
+	&.-header {
+	}
+	&.-navigationLocal {
+		.layout__inner {
+			@include utility.mq-min(768) {
+				display: grid;
+				grid-template-columns: 20.83% 4.166% 75%;
+				grid-template-rows: auto;
+				// grid-column-gap: 4.166%;
+			}
+		}
+		.layout__contentColumn {
+			margin-bottom: 50px;
+			@include utility.mq-min(768) {
+				// grid-column-start: 2;
+				// grid-column-end: 3;
+				grid-column-start: 3;
+				grid-column-end: 4;
+				grid-row-start: 1;
+				margin-bottom: 0;
+			}
+		}
+		// https://ux.stackexchange.com/questions/25217/whats-scan-column-and-why-do-we-name-it-like-this
+		.layout__scanColumn {
+			@include utility.mq-min(768) {
+				grid-column-start: 1;
+				grid-column-end: 2;
+				grid-row-start: 1;
+			}
+		}
+	}
+}
+
+
+// -----------------------------------------------------------
+// Header
+// -----------------------------------------------------------
+
+
+// -----------------------------------------------------------
+// Navigation
+// -----------------------------------------------------------
+
+
+// -----------------------------------------------------------
+// Contents
+// -----------------------------------------------------------
+
+
+// -----------------------------------------------------------
+// Footer
+// -----------------------------------------------------------

@@ -1,11 +1,12 @@
 @charset "UTF-8";
 
+@use "setting";
+@use "mixins";
+@use "core/utility";
+
 /* -----------------------------------------------------------
    Print
 ----------------------------------------------------------- */
-
 @media print{
-
-@include mt-float-clearing;
 
 }
