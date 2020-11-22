@@ -4,12 +4,11 @@ const chalk = require('chalk');
 const yosay = require('yosay');
 const mkdirp = require('mkdirp');
 const _ = require("underscore.string");
-const wiring = require("html-wiring");
 const path = require("path");
 
 module.exports = class extends Generator {
   prompting() {
-    this.pkg = JSON.parse(wiring.readFileAsString(path.join(__dirname, "../../package.json")));
+    this.pkg = require(path.join(__dirname, "../../package.json"));
 
     // Have Yeoman greet the user.
     this.log(yosay(
@@ -115,7 +114,10 @@ module.exports = class extends Generator {
     this.fs.copyTpl(
       this.templatePath('README.md'),
       this.destinationPath('README.md'),
-      { appname: this.appname, pkg: this.pkg }
+      {
+        appname: this.appname,
+        version: this.pkg.version
+      }
     );
 
     if (this.vscode) {
